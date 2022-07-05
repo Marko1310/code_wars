@@ -30,15 +30,35 @@
 // Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
 //Note: input will never be an empty string
 
-function fakeBin(x) {
-  let str = x.split("");
-  let result = [];
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] < 5) {
-      result.push(0);
-    } else {
-      result.push(1);
-    }
+// function fakeBin(x) {
+//   let str = x.split("");
+//   let result = [];
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] < 5) {
+//       result.push(0);
+//     } else {
+//       result.push(1);
+//     }
+//   }
+//   return result.join("");
+// }
+
+// console.log(fakeBin(47384843));
+
+// 4. BASIC MATHEMATICAL OPERATIONS
+// Your task is to create a function that does four basic mathematical operations.
+
+// The function should take three arguments - operation(string/char), value1(number), value2(number).
+// The function should return result of numbers after applying the chosen operation.
+
+function basicOp(operation, value1, value2) {
+  if (operation === "+") {
+    return value1 + value2;
+  } else if (operation === "-") {
+    return value1 - value2;
+  } else if (operation === "*") {
+    return value1 * value2;
+  } else if (operation === "/") {
+    return value1 / value2;
   }
-  return result.join("");
 }
