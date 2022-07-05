@@ -51,14 +51,42 @@
 // The function should take three arguments - operation(string/char), value1(number), value2(number).
 // The function should return result of numbers after applying the chosen operation.
 
-function basicOp(operation, value1, value2) {
-  if (operation === "+") {
-    return value1 + value2;
-  } else if (operation === "-") {
-    return value1 - value2;
-  } else if (operation === "*") {
-    return value1 * value2;
-  } else if (operation === "/") {
-    return value1 / value2;
+// function basicOp(operation, value1, value2) {
+//   if (operation === "+") {
+//     return value1 + value2;
+//   } else if (operation === "-") {
+//     return value1 - value2;
+//   } else if (operation === "*") {
+//     return value1 * value2;
+//   } else if (operation === "/") {
+//     return value1 / value2;
+//   }
+// }
+
+// 5. COUNT OF POSITIVE / SUM OF NEGATIVE
+// Given an array of integers.
+
+// Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
+// If the input is an empty array or is null, return an empty array.
+
+function countPositivesSumNegatives(input) {
+  let countPositive = 0;
+  let sumNegative = 0;
+  let sum = [];
+  if (input === null) {
+    return [];
+  } else {
+    for (let i = 0; i < input.length; i++) {
+      let counter = 0;
+      if (input[i] > 0) {
+        counter++;
+        countPositive += counter;
+      } else {
+        sumNegative += input[i];
+      }
+    }
   }
+  sum.push(countPositive, sumNegative);
+
+  return countPositive === 0 && sumNegative === 0 ? [] : sum;
 }
