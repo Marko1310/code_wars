@@ -69,24 +69,38 @@
 // Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
 // If the input is an empty array or is null, return an empty array.
 
-function countPositivesSumNegatives(input) {
-  let countPositive = 0;
-  let sumNegative = 0;
-  let sum = [];
-  if (input === null) {
-    return [];
-  } else {
-    for (let i = 0; i < input.length; i++) {
-      let counter = 0;
-      if (input[i] > 0) {
-        counter++;
-        countPositive += counter;
-      } else {
-        sumNegative += input[i];
-      }
-    }
-  }
-  sum.push(countPositive, sumNegative);
+// function countPositivesSumNegatives(input) {
+//   let countPositive = 0;
+//   let sumNegative = 0;
+//   let sum = [];
+//   if (input === null) {
+//     return [];
+//   } else {
+//     for (let i = 0; i < input.length; i++) {
+//       let counter = 0;
+//       if (input[i] > 0) {
+//         counter++;
+//         countPositive += counter;
+//       } else {
+//         sumNegative += input[i];
+//       }
+//     }
+//   }
+//   sum.push(countPositive, sumNegative);
 
-  return countPositive === 0 && sumNegative === 0 ? [] : sum;
+//   return countPositive === 0 && sumNegative === 0 ? [] : sum;
+// }
+
+// 6. SUM MIXED ARRAY
+
+//Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+// Return your answer as a number.
+
+function sumMix(x) {
+  let sum = 0;
+  for (let i = 0; i < x.length; i++) {
+    sum += Number(x[i]);
+    console.log(sum);
+  }
+  return sum;
 }
