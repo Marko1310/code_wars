@@ -96,11 +96,23 @@
 //Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
 // Return your answer as a number.
 
-function sumMix(x) {
-  let sum = 0;
-  for (let i = 0; i < x.length; i++) {
-    sum += Number(x[i]);
-    console.log(sum);
-  }
-  return sum;
+// function sumMix(x) {
+//   let sum = 0;
+//   for (let i = 0; i < x.length; i++) {
+//     sum += Number(x[i]);
+//     console.log(sum);
+//   }
+//   return sum;
+// }
+
+// 7. BEGINNERS SERIES #2 CLOCK
+
+// Your task is to write a function which returns the time since midnight in milliseconds.
+// Input constraints:
+// 0 <= h <= 23
+// 0 <= m <= 59
+// 0 <= s <= 59
+
+function past(h, m, s) {
+  return h * 3600000 + m * 60000 + s * 1000;
 }
