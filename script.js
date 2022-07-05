@@ -113,6 +113,19 @@
 // 0 <= m <= 59
 // 0 <= s <= 59
 
-function past(h, m, s) {
-  return h * 3600000 + m * 60000 + s * 1000;
+// function past(h, m, s) {
+//   return h * 3600000 + m * 60000 + s * 1000;
+// }
+
+// 8. REMOVE STRING SPACES
+//Simple, remove the spaces from the string, then return the resultant string.
+
+function noSpace(x) {
+  let sentence = " ";
+  for (let i = 0; i < x.length; i++) {
+    if (x[i] !== " ") {
+      sentence += x[i];
+    }
+  }
+  return sentence;
 }
