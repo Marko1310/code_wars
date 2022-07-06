@@ -120,12 +120,34 @@
 // 8. REMOVE STRING SPACES
 //Simple, remove the spaces from the string, then return the resultant string.
 
-function noSpace(x) {
-  let sentence = " ";
-  for (let i = 0; i < x.length; i++) {
-    if (x[i] !== " ") {
-      sentence += x[i];
-    }
+// function noSpace(x) {
+//   let sentence = " ";
+//   for (let i = 0; i < x.length; i++) {
+//     if (x[i] !== " ") {
+//       sentence += x[i];
+//     }
+//   }
+//   return sentence;
+// }
+
+// 9. REVERSE WORDS
+//Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+function reverseWords(str) {
+  let word = [];
+  let sentence = [];
+  let fullSentence = "";
+
+  //Split the strings to an array separated by space
+  let arr = str.split(" ");
+
+  // Loop through the array and each element(word) split to array of letters
+  // Then reverese that array of letters
+  // And join every reversed letter to a word
+  for (let i = 0; i < arr.length; i++) {
+    word[i] = arr[i].split("").reverse("").join("");
+    sentence = sentence.concat(word[i]);
   }
-  return sentence;
+  fullSentence = sentence.join(" ");
+  return fullSentence;
 }
