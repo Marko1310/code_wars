@@ -133,21 +133,51 @@
 // 9. REVERSE WORDS
 //Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
 
-function reverseWords(str) {
-  let word = [];
-  let sentence = [];
-  let fullSentence = "";
+// function reverseWords(str) {
+//   let word = [];
+//   let sentence = [];
+//   let fullSentence = "";
 
-  //Split the strings to an array separated by space
-  let arr = str.split(" ");
+//   //Split the strings to an array separated by space
+//   let arr = str.split(" ");
 
-  // Loop through the array and each element(word) split to array of letters
-  // Then reverese that array of letters
-  // And join every reversed letter to a word
-  for (let i = 0; i < arr.length; i++) {
-    word[i] = arr[i].split("").reverse("").join("");
-    sentence = sentence.concat(word[i]);
-  }
-  fullSentence = sentence.join(" ");
-  return fullSentence;
+//   // Loop through the array and each element(word) split to array of letters
+//   // Then reverese that array of letters
+//   // And join every reversed letter to a word
+//   for (let i = 0; i < arr.length; i++) {
+//     word[i] = arr[i].split("").reverse("").join("");
+//     sentence = sentence.concat(word[i]);
+//   }
+//   fullSentence = sentence.join(" ");
+//   return fullSentence;
+// }
+
+// 10. PIG LATIN
+//Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+// Examples
+// pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+// pigIt('Hello world !');     // elloHay orldway !
+
+function pigIt(str) {
+  let newArr = [];
+  let letter = [];
+  let sent;
+  // Split strings into array of words
+  let words = str.split(" ");
+  // For every element of array split words to letters
+  // extract first letter with splice
+  // push first lette to end and add ay
+  // join the letters to string
+
+  words.forEach((x) => {
+    if (x === "!" || x === "." || x === "," || x === "?") {
+      newArr.push(x);
+    } else {
+      letter = x.split("");
+      letter.push(letter.splice(0, 1).toString(), "a", "y");
+      newArr.push(letter.join(""));
+    }
+  });
+  return newArr.join(" ");
 }
