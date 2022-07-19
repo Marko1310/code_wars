@@ -159,28 +159,28 @@
 // pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 // pigIt('Hello world !');     // elloHay orldway !
 
-function pigIt(str) {
-  let newArr = [];
-  let letter = [];
-  let sent;
-  // Split strings into array of words
-  let words = str.split(" ");
-  // For every element of array split words to letters
-  // extract first letter with splice
-  // push first lette to end and add ay
-  // join the letters to string
+// function pigIt(str) {
+//   let newArr = [];
+//   let letter = [];
+//   let sent;
+//   // Split strings into array of words
+//   let words = str.split(" ");
+//   // For every element of array split words to letters
+//   // extract first letter with splice
+//   // push first lette to end and add ay
+//   // join the letters to string
 
-  words.forEach((x) => {
-    if (x === "!" || x === "." || x === "," || x === "?") {
-      newArr.push(x);
-    } else {
-      letter = x.split("");
-      letter.push(letter.splice(0, 1).toString(), "a", "y");
-      newArr.push(letter.join(""));
-    }
-  });
-  return newArr.join(" ");
-}
+//   words.forEach((x) => {
+//     if (x === "!" || x === "." || x === "," || x === "?") {
+//       newArr.push(x);
+//     } else {
+//       letter = x.split("");
+//       letter.push(letter.splice(0, 1).toString(), "a", "y");
+//       newArr.push(letter.join(""));
+//     }
+//   });
+//   return newArr.join(" ");
+// }
 
 // 11. TWO SUM
 // Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
@@ -188,23 +188,23 @@ function pigIt(str) {
 // The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
 // twoSum([1, 2, 3], 4) // returns [0, 2] or [2, 0]
 
-function twoSum(numbers, target) {
-  let first = 0;
-  let second = 0;
-  let answer = [];
-  for (let i = 0; i < numbers.length; i++) {
-    first = numbers[i];
-    let index = 0;
-    for (let j = i + 1; j < numbers.length; j++) {
-      index++;
-      second = numbers[j];
-      if (first + second === target) {
-        answer.push(i, j);
-        return answer;
-      }
-    }
-  }
-}
+// function twoSum(numbers, target) {
+//   let first = 0;
+//   let second = 0;
+//   let answer = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     first = numbers[i];
+//     let index = 0;
+//     for (let j = i + 1; j < numbers.length; j++) {
+//       index++;
+//       second = numbers[j];
+//       if (first + second === target) {
+//         answer.push(i, j);
+//         return answer;
+//       }
+//     }
+//   }
+// }
 
 // 12. FIRST NON - REPEATING CHARACTER
 // Write a function named first_non_repeating_letter that takes a string input, and returns the first character that is not repeated anywhere in the string.
@@ -212,20 +212,63 @@ function twoSum(numbers, target) {
 // As an added challenge, upper- and lowercase letters are considered the same character, but the function should return the correct case for the initial letter. For example, the input 'sTreSS' should return 'T'.
 // If a string contains all repeating characters, it should return an empty string ("") or None -- see sample tests.
 
-function firstNonRepeatingLetter(s) {
-  let fill = [];
-  let counter = 0;
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i + 1; j < s.length; j++) {
-      if (s[i].toLowerCase() === s[j].toLowerCase()) {
-        fill.push(s[j].toLowerCase());
+// function firstNonRepeatingLetter(s) {
+//   let fill = [];
+//   let counter = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     for (let j = i + 1; j < s.length; j++) {
+//       if (s[i].toLowerCase() === s[j].toLowerCase()) {
+//         fill.push(s[j].toLowerCase());
+//       }
+//     }
+//     if (!fill.includes(s[i].toLowerCase())) {
+//       return s[i];
+//     }
+//   }
+//   return "None";
+// }
+
+// console.log(firstNonRepeatingLetter("aaaaaa"));
+
+// 13. SUM OF PAIRS
+//Sum of Pairs
+
+// Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
+
+// sum_pairs([11, 3, 7, 5],         10)
+// #              ^--^      3 + 7 = 10
+// == [3, 7]
+
+// sum_pairs([4, 3, 2, 3, 4],         6)
+// #          ^-----^         4 + 2 = 6, indices: 0, 2 *
+// #             ^-----^      3 + 3 = 6, indices: 1, 3
+// #                ^-----^   2 + 4 = 6, indices: 2, 4
+// #  * entire pair is earlier, and therefore is the correct answer
+// == [4, 2]
+
+// sum_pairs([0, 0, -2, 3], 2)
+// #  there are no pairs of values that can be added to produce 2.
+// == None/nil/undefined (Based on the language)
+
+// sum_pairs([10, 5, 2, 3, 7, 5],         10)
+// #              ^-----------^   5 + 5 = 10, indices: 1, 5
+// #                    ^--^      3 + 7 = 10, indices: 3, 4 *
+// #  * entire pair is earlier, and therefore is the correct answer
+// == [3, 7]
+
+function sum_pairs(arr, sum) {
+  let solution = [];
+  for (let i = 0; i < arr.length; i++) {
+    // For every i move j to the left and search if the sum is equal to the sum
+    for (let j = i - 1; j >= 0; j--) {
+      if (arr[i] + arr[j] === sum) {
+        solution.push(arr[j], arr[i]);
+        return solution;
       }
     }
-    if (!fill.includes(s[i].toLowerCase())) {
-      return s[i];
-    }
   }
-  return "None";
+  // If there is no sum, return undefined
+  return undefined;
 }
 
-console.log(firstNonRepeatingLetter("aaaaaa"));
+console.log(sum_pairs([10, 5, 2, 3, 7, 5], 10));
