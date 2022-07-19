@@ -232,39 +232,44 @@
 
 // 13. SUM OF PAIRS
 //Sum of Pairs
-
 // Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
-
-// sum_pairs([11, 3, 7, 5],         10)
-// #              ^--^      3 + 7 = 10
-// == [3, 7]
-
-// sum_pairs([4, 3, 2, 3, 4],         6)
-// #          ^-----^         4 + 2 = 6, indices: 0, 2 *
-// #             ^-----^      3 + 3 = 6, indices: 1, 3
-// #                ^-----^   2 + 4 = 6, indices: 2, 4
-// #  * entire pair is earlier, and therefore is the correct answer
-// == [4, 2]
-
-// sum_pairs([0, 0, -2, 3], 2)
-// #  there are no pairs of values that can be added to produce 2.
-// == None/nil/undefined (Based on the language)
-
 // sum_pairs([10, 5, 2, 3, 7, 5],         10)
 // #              ^-----------^   5 + 5 = 10, indices: 1, 5
 // #                    ^--^      3 + 7 = 10, indices: 3, 4 *
 // #  * entire pair is earlier, and therefore is the correct answer
 // == [3, 7]
 
+// Ineficient code for large arrays
+// function sum_pairs(arr, sum) {
+//   let solution = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     // For every i move j to the left and search if the sum is equal to the sum
+//     for (let j = i - 1; j >= 0; j--) {
+//       if (arr[i] + arr[j] === sum) {
+//         solution.push(arr[j], arr[i]);
+//         return solution;
+//       }
+//     }
+//   }
+//   // If there is no sum, return undefined
+//   return undefined;
+// }
+
+// console.log(sum_pairs([10, 5, 2, 3, 7, 5], 10));
+
+// More efficient
 function sum_pairs(arr, sum) {
+  const setOfNumbers = new Set();
   let solution = [];
   for (let i = 0; i < arr.length; i++) {
-    // For every i move j to the left and search if the sum is equal to the sum
-    for (let j = i - 1; j >= 0; j--) {
-      if (arr[i] + arr[j] === sum) {
-        solution.push(arr[j], arr[i]);
-        return solution;
-      }
+    // Calculate other integer by subtracting the final sum with the integer [i]
+    let rest = sum - arr[i];
+    // If the set contains already the integer, then their sum will be the first sum to give the requested sum, else: fill the set with the arr[i] that was already checked and repeat the process until the sum === requested sum
+    if (setOfNumbers.has(rest)) {
+      solution.push(rest, arr[i]);
+      return solution;
+    } else {
+      setOfNumbers.add(arr[i]);
     }
   }
   // If there is no sum, return undefined
