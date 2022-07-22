@@ -258,22 +258,46 @@
 // console.log(sum_pairs([10, 5, 2, 3, 7, 5], 10));
 
 // More efficient
-function sum_pairs(arr, sum) {
-  const setOfNumbers = new Set();
-  let solution = [];
+// function sum_pairs(arr, sum) {
+//   const setOfNumbers = new Set();
+//   let solution = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     // Calculate other integer by subtracting the final sum with the integer [i]
+//     let rest = sum - arr[i];
+//     // If the set contains already the integer, then their sum will be the first sum to give the requested sum, else: fill the set with the arr[i] that was already checked and repeat the process until the sum === requested sum
+//     if (setOfNumbers.has(rest)) {
+//       solution.push(rest, arr[i]);
+//       return solution;
+//     } else {
+//       setOfNumbers.add(arr[i]);
+//     }
+//   }
+//   // If there is no sum, return undefined
+//   return undefined;
+// }
+
+// 14. MAXIMUM SUBARRAY SUM
+//The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+// maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
+// // should be 6: [4, -1, 2, 1]
+// Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
+// Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
+
+var maxSequence = function (arr) {
+  let sum = 0;
+  let sumMax = 0;
   for (let i = 0; i < arr.length; i++) {
-    // Calculate other integer by subtracting the final sum with the integer [i]
-    let rest = sum - arr[i];
-    // If the set contains already the integer, then their sum will be the first sum to give the requested sum, else: fill the set with the arr[i] that was already checked and repeat the process until the sum === requested sum
-    if (setOfNumbers.has(rest)) {
-      solution.push(rest, arr[i]);
-      return solution;
-    } else {
-      setOfNumbers.add(arr[i]);
+    sum = arr[i];
+    for (let j = i + 1; j <= arr.length; j++) {
+      if (arr.length === 0) {
+        return 0;
+      } else {
+        if (sumMax < sum) {
+          sumMax = sum;
+        }
+        sum += arr[j];
+      }
     }
   }
-  // If there is no sum, return undefined
-  return undefined;
-}
-
-console.log(sum_pairs([10, 5, 2, 3, 7, 5], 10));
+  return sumMax;
+};
