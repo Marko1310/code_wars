@@ -283,21 +283,44 @@
 // Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
 // Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
 
-var maxSequence = function (arr) {
-  let sum = 0;
-  let sumMax = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum = arr[i];
-    for (let j = i + 1; j <= arr.length; j++) {
-      if (arr.length === 0) {
-        return 0;
-      } else {
-        if (sumMax < sum) {
-          sumMax = sum;
-        }
-        sum += arr[j];
-      }
-    }
-  }
-  return sumMax;
-};
+// var maxSequence = function (arr) {
+//   let sum = 0;
+//   let sumMax = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     sum = arr[i];
+//     for (let j = i + 1; j <= arr.length; j++) {
+//       if (arr.length === 0) {
+//         return 0;
+//       } else {
+//         if (sumMax < sum) {
+//           sumMax = sum;
+//         }
+//         sum += arr[j];
+//       }
+//     }
+//   }
+//   return sumMax;
+// };
+
+// 15. SCRAMBLIES
+//Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+// Notes:
+// Only lower case letters will be used (a-z). No punctuation or digits will be included.
+// Performance needs to be considered.
+// Examples:
+// scramble('rkqodlw', 'world') ==> True
+// scramble('cedewaraaossoqqyt', 'codewars') ==> True
+// scramble('katas', 'steak') ==> False
+
+function scramble(str1, str2) {
+  let st1 = str1.split("");
+  let st2 = str2.split("");
+  st1.forEach((element) => {
+    if (st2.includes(element)) st2.splice(st2.indexOf(element), 1);
+  });
+  return st2.length === 0;
+}
+
+let str1 = "rqodlw";
+let str2 = "world";
+console.log(scramble(str1, str2));
