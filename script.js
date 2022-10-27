@@ -312,15 +312,15 @@
 // scramble('cedewaraaossoqqyt', 'codewars') ==> True
 // scramble('katas', 'steak') ==> False
 
-function scramble(str1, str2) {
-  let st1 = str1.split("");
-  let st2 = str2.split("");
-  st1.forEach((element) => {
-    if (st2.includes(element)) st2.splice(st2.indexOf(element), 1);
-  });
-  return st2.length === 0;
-}
+// function scramble(str1, str2) {
+//   let st1 = str1.split("");
+//   let st2 = str2.split("");
+//   st1.forEach((element) => {
+//     if (st2.includes(element)) st2.splice(st2.indexOf(element), 1);
+//   });
+//   return st2.length === 0;
+// }
 
-let str1 = "rqodlw";
-let str2 = "world";
-console.log(scramble(str1, str2));
+// let str1 = "rqodlw";
+// let str2 = "world";
+// console.log(scramble(str1, str2));
