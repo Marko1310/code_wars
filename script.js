@@ -330,31 +330,78 @@
 // Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in. Additionally, if the number is negative, return 0 (for languages that do have them).
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
-function solution(number) {
-  let arr = [];
+// function solution(number) {
+//   let arr = [];
 
-  if (number < 0) return 0;
+//   if (number < 0) return 0;
 
-  // Check every number and decreasing by one, push into array
-  for (let i = 1; i < number; i++) {
-    let lowerNumber = number - i;
-    if (lowerNumber % 3 === 0 || lowerNumber % 5 === 0) {
-      arr.push(lowerNumber);
-    }
-  }
+//   // Check every number and decreasing by one, push into array
+//   for (let i = 1; i < number; i++) {
+//     let lowerNumber = number - i;
+//     if (lowerNumber % 3 === 0 || lowerNumber % 5 === 0) {
+//       arr.push(lowerNumber);
+//     }
+//   }
 
-  // If there are elements in array
-  if (arr.length > 0)
-    // 1. sort array
-    // 2. filter new array where the element is not the same as previous
-    // 3. reduce the array: sum all values
-    return arr
-      .sort()
-      .filter(function (el, index, arr) {
-        return el !== arr[index - 1];
-      })
-      .reduce((previousValue, currentValue) => previousValue + currentValue);
+//   // If there are elements in array
+//   if (arr.length > 0)
+//     // 1. sort array
+//     // 2. filter new array where the element is not the same as previous
+//     // 3. reduce the array: sum all values
+//     return arr
+//       .sort()
+//       .filter(function (el, index, arr) {
+//         return el !== arr[index - 1];
+//       })
+//       .reduce((previousValue, currentValue) => previousValue + currentValue);
 
-  //If no elements in array return 0
-  return 0;
+//   //If no elements in array return 0
+//   return 0;
+// }
+
+// 17. Counting sheep
+// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+// For example,
+// [true,  true,  true,  false,
+//   true,  true,  true,  true ,
+//   true,  false, true,  false,
+//   true,  false, false, true ,
+//   true,  true,  true,  true ,
+//   false, false, true,  true]
+// The correct answer would be 17.
+// Hint: Don't forget to check for bad values like null/undefined
+
+function countSheeps(arrayOfSheep) {
+  let n = 0;
+  arrayOfSheep.forEach((el) => (el === true ? (n += 1) : n));
+  return n;
 }
+
+const arr = [
+  true,
+  true,
+  true,
+  false,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  true,
+  false,
+  true,
+  false,
+  false,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  false,
+  true,
+  true,
+];
+
+console.log(countSheeps(arr));
