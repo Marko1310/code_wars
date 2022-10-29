@@ -371,37 +371,54 @@
 // The correct answer would be 17.
 // Hint: Don't forget to check for bad values like null/undefined
 
-function countSheeps(arrayOfSheep) {
-  let n = 0;
-  arrayOfSheep.forEach((el) => (el === true ? (n += 1) : n));
-  return n;
+// function countSheeps(arrayOfSheep) {
+//   let n = 0;
+//   arrayOfSheep.forEach((el) => (el === true ? (n += 1) : n));
+//   return n;
+// }
+
+// const arr = [
+//   true,
+//   true,
+//   true,
+//   false,
+//   true,
+//   true,
+//   true,
+//   true,
+//   true,
+//   false,
+//   true,
+//   false,
+//   true,
+//   false,
+//   false,
+//   true,
+//   true,
+//   true,
+//   true,
+//   true,
+//   false,
+//   false,
+//   true,
+//   true,
+// ];
+
+// console.log(countSheeps(arr));
+
+// 18. SUM OF DIGITS / DIGITAL ROOT
+
+function digitalRoot(n) {
+  let sum = 0;
+  if (n < 10) {
+    return n;
+  } else {
+    const arr = n.toString().split("");
+    arr.forEach((el) => {
+      sum += +el;
+    });
+    return digitalRoot(sum);
+  }
 }
 
-const arr = [
-  true,
-  true,
-  true,
-  false,
-  true,
-  true,
-  true,
-  true,
-  true,
-  false,
-  true,
-  false,
-  true,
-  false,
-  false,
-  true,
-  true,
-  true,
-  true,
-  true,
-  false,
-  false,
-  true,
-  true,
-];
-
-console.log(countSheeps(arr));
+console.log(digitalRoot(456));
