@@ -43,7 +43,7 @@
 //   return result.join("");
 // }
 
-// console.log(fakeBin(47384843));
+// return(fakeBin(47384843));
 
 // 4. BASIC MATHEMATICAL OPERATIONS
 // Your task is to create a function that does four basic mathematical operations.
@@ -100,7 +100,7 @@
 //   let sum = 0;
 //   for (let i = 0; i < x.length; i++) {
 //     sum += Number(x[i]);
-//     console.log(sum);
+//     return(sum);
 //   }
 //   return sum;
 // }
@@ -228,7 +228,7 @@
 //   return "None";
 // }
 
-// console.log(firstNonRepeatingLetter("aaaaaa"));
+// return(firstNonRepeatingLetter("aaaaaa"));
 
 // 13. SUM OF PAIRS
 //Sum of Pairs
@@ -255,7 +255,7 @@
 //   return undefined;
 // }
 
-// console.log(sum_pairs([10, 5, 2, 3, 7, 5], 10));
+// return(sum_pairs([10, 5, 2, 3, 7, 5], 10));
 
 // More efficient
 // function sum_pairs(arr, sum) {
@@ -323,7 +323,7 @@
 
 // let str1 = "rqodlw";
 // let str2 = "world";
-// console.log(scramble(str1, str2));
+// return(scramble(str1, str2));
 
 // 16. MULTIPLES OF 3 OR 5
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
@@ -404,7 +404,7 @@
 //   true,
 // ];
 
-// console.log(countSheeps(arr));
+// return(countSheeps(arr));
 
 // 18. SUM OF DIGITS / DIGITAL ROOT
 
@@ -421,7 +421,7 @@
 //   }
 // }
 
-// console.log(digitalRoot(456));
+// return(digitalRoot(456));
 
 // 19. COMPLEMENTARY DNA
 //Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
@@ -432,21 +432,54 @@
 // "ATTGC" --> "TAACG"
 // "GTAT" --> "CATA"
 
-function DNAStrand(dna) {
-  const arr = [];
-  dna.split("").forEach((el) => {
-    if (el === "A") {
-      arr.push("T");
-    }
-    if (el === "T") {
-      arr.push("A");
-    }
-    if (el === "C") {
-      arr.push("G");
-    }
-    if (el === "G") {
-      arr.push("C");
-    }
-  });
-  return arr.join("");
+// function DNAStrand(dna) {
+//   const arr = [];
+//   dna.split("").forEach((el) => {
+//     if (el === "A") {
+//       arr.push("T");
+//     }
+//     if (el === "T") {
+//       arr.push("A");
+//     }
+//     if (el === "C") {
+//       arr.push("G");
+//     }
+//     if (el === "G") {
+//       arr.push("C");
+//     }
+//   });
+//   return arr.join("");
+// }
+
+// 20. WHO LIKES IT
+//You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+// Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+// []                                -->  "no one likes this"
+// ["Peter"]                         -->  "Peter likes this"
+// ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+// Note: For 4 or more names, the number in "and 2 others" simply increases.
+
+function likes(names) {
+  switch (names.length) {
+    case 0:
+      return `no one likes this`;
+
+    case 1:
+      return `${names[0]} likes this`;
+
+    case 2:
+      return `${names[0]} and ${names[1]} like this`;
+
+    case 3:
+      return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+
+    default:
+      return `${names[0]}, ${names[1]} and ${
+        names.length - 2
+      } others like this`;
+  }
 }
+
+console.log(likes(["a", "b", "c", "f", "c"]));
