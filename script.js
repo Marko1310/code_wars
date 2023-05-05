@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // 1. SUM OF POSITIVE
 //You get an array of numbers, return the sum of all of the positives ones.
@@ -461,25 +461,51 @@
 // ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 // Note: For 4 or more names, the number in "and 2 others" simply increases.
 
-function likes(names) {
-  switch (names.length) {
-    case 0:
-      return `no one likes this`;
+// function likes(names) {
+//   switch (names.length) {
+//     case 0:
+//       return `no one likes this`;
 
-    case 1:
-      return `${names[0]} likes this`;
+//     case 1:
+//       return `${names[0]} likes this`;
 
-    case 2:
-      return `${names[0]} and ${names[1]} like this`;
+//     case 2:
+//       return `${names[0]} and ${names[1]} like this`;
 
-    case 3:
-      return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+//     case 3:
+//       return `${names[0]}, ${names[1]} and ${names[2]} like this`;
 
-    default:
-      return `${names[0]}, ${names[1]} and ${
-        names.length - 2
-      } others like this`;
+//     default:
+//       return `${names[0]}, ${names[1]} and ${
+//         names.length - 2
+//       } others like this`;
+//   }
+// }
+
+// console.log(likes(["a", "b", "c", "f", "c"]));
+
+//////// LEETCODE //////
+// 21.Array Prototype Last
+// Write code that enhances all arrays such that you can call the array.last() method on any array and it will return the last element. If there are no elements in the array, it should return -1.
+
+// Example 1:
+// Input: nums = [1,2,3]
+// Output: 3
+// Explanation: Calling nums.last() should return the last element: 3.
+
+// Example 2:
+// Input: nums = []
+// Output: -1
+// Explanation: Because there are no elements, return -1.
+
+Array.prototype.last = function () {
+  if (this.length === 0) {
+    return -1;
+  } else {
+    return this[this.length - 1];
   }
-}
+};
 
-console.log(likes(["a", "b", "c", "f", "c"]));
+const arr = [1, 2, 5, 6, 7];
+
+console.log(arr.last());
