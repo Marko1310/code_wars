@@ -529,15 +529,38 @@
 // Output: [-2,-1,0,1,2]
 // Explanation: counter() initially returns -2. Then increases after each sebsequent call.
 
-var createCounter = function (n) {
-  let a = -1;
-  return function () {
-    a++;
-    return n + a;
-  };
-};
+// var createCounter = function (n) {
+//   let a = -1;
+//   return function () {
+//     a++;
+//     return n + a;
+//   };
+// };
 
-const counter = createCounter(10);
-console.log(counter());
-console.log(counter());
-console.log(counter());
+// const counter = createCounter(10);
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());
+
+// 23. Sleep
+// Given a positive integer millis, write an asyncronous function that sleeps for millis milliseconds. It can resolve any value.
+
+// Example 1:
+// Input: millis = 100
+// Output: 100
+// Explanation: It should return a promise that resolves after 100ms.
+// let t = Date.now();
+// sleep(100).then(() => {
+//   console.log(Date.now() - t); // 100
+// });
+
+// Example 2:
+// Input: millis = 200
+// Output: 200
+// Explanation: It should return a promise that resolves after 200ms.
+
+async function sleep(millis) {
+  return new Promise((resolveInner) => {
+    setTimeout(resolveInner, 1000);
+  });
+}
