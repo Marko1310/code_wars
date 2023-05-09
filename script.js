@@ -561,6 +561,6 @@
 
 async function sleep(millis) {
   return new Promise((resolveInner) => {
-    setTimeout(resolveInner, 1000);
+    setTimeout(resolveInner, millis);
   });
 }
