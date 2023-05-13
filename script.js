@@ -699,31 +699,53 @@
 // Output: [0,1]
 
 // Solution 1
-var twoSum = function (nums, target) {
-  let indexes = [];
-  for (i = 0; i < nums.length; i++) {
-    for (j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        indexes.push(i, j);
-      }
-    }
-  }
-  return indexes;
+// var twoSum = function (nums, target) {
+//   let indexes = [];
+//   for (i = 0; i < nums.length; i++) {
+//     for (j = i + 1; j < nums.length; j++) {
+//       if (nums[i] + nums[j] === target) {
+//         indexes.push(i, j);
+//       }
+//     }
+//   }
+//   return indexes;
+// };
+
+// // Solution 2
+// var twoSum = function (nums, target) {
+//   const previousValue = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     const currentNumber = nums[i];
+//     const neededValue = target - currentNumber;
+//     const index2 = previousValue[neededValue];
+//     if (index2 !== undefined) {
+//       return [index2, i];
+//     } else {
+//       previousValue[currentNumber] = i;
+//     }
+//   }
+// };
+
+// twoSum([3, 2, 3, 4, 5], 9);
+
+//27. Palindrome Number
+// Given an integer x, return true if x is a
+// palindrome, and false otherwise.
+
+// Example 1:
+// Input: x = 121
+// Output: true
+// Explanation: 121 reads as 121 from left to right and from right to left.
+
+// Example 2:
+// Input: x = -121
+// Output: false
+// Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+
+var isPalindrome = function (x) {
+  const array = x.toString();
+  const reversedArray = array.split('').reverse().join('');
+  return array === reversedArray;
 };
 
-// Solution 2
-var twoSum = function (nums, target) {
-  const previousValue = {};
-  for (let i = 0; i < nums.length; i++) {
-    const currentNumber = nums[i];
-    const neededValue = target - currentNumber;
-    const index2 = previousValue[neededValue];
-    if (index2 != undefined) {
-      return [index2, i];
-    } else {
-      previousValue[currentNumber] = i;
-    }
-  }
-};
-
-twoSum([3, 2, 3, 4, 5], 9);
+console.log(isPalindrome(-10));
