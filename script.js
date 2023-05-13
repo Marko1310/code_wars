@@ -701,8 +701,10 @@
 var twoSum = function (nums, target) {
   let indexes = [];
   for (i = 0; i < nums.length; i++) {
-    if (nums[i] + nums[i + 1] === target) {
-      indexes.push(i, i + 1);
+    for (j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        indexes.push(i, j);
+      }
     }
   }
   return indexes;
