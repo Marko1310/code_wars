@@ -698,6 +698,7 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 
+// Solution 1
 var twoSum = function (nums, target) {
   let indexes = [];
   for (i = 0; i < nums.length; i++) {
@@ -709,3 +710,20 @@ var twoSum = function (nums, target) {
   }
   return indexes;
 };
+
+// Solution 2
+var twoSum = function (nums, target) {
+  const previousValue = {};
+  for (let i = 0; i < nums.length; i++) {
+    const currentNumber = nums[i];
+    const neededValue = target - currentNumber;
+    const index2 = previousValue[neededValue];
+    if (index2 != undefined) {
+      return [index2, i];
+    } else {
+      previousValue[currentNumber] = i;
+    }
+  }
+};
+
+twoSum([3, 2, 3, 4, 5], 9);
