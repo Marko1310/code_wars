@@ -742,10 +742,45 @@
 // Output: false
 // Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
 
-var isPalindrome = function (x) {
-  const array = x.toString();
-  const reversedArray = array.split('').reverse().join('');
-  return array === reversedArray;
-};
+// var isPalindrome = function (x) {
+//   const array = x.toString();
+//   const reversedArray = array.split('').reverse().join('');
+//   return array === reversedArray;
+// };
 
-console.log(isPalindrome(-10));
+// console.log(isPalindrome(-10));
+
+// 28. Valid Parentheses
+// An input string is valid if:
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+// Example 1:
+// Input: s = "()"
+// Output: true
+
+// Example 2:
+// Input: s = "()[]{}"
+// Output: true
+
+// Example 3:
+// Input: s = "(]"
+// Output: false
+
+// var isValid = function (s) {
+//   const hashMap = { '(': ')', '{': '}', '[': ']' };
+
+//   const stack = [];
+//   for (let ch of s) {
+//     if (hashMap[ch]) {
+//       stack.push(hashMap[ch]);
+//     } else if (stack.length > 0 && stack[stack.length - 1] === ch) {
+//       stack.pop();
+//     } else {
+//       return false;
+//     }
+//   }
+//   return stack.length === 0;
+// };
+
+// console.log(isValid('[[]()]'));
