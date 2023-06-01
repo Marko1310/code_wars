@@ -794,15 +794,32 @@
 // Explanation: "sad" occurs at index 0 and 6.
 // The first occurrence is at index 0, so we return 0.
 
-var strStr = function (haystack, needle) {
-  const array = haystack.split(needle).join(' ');
-  console.log(array);
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === ' ') {
-      return i;
-    }
-  }
-  return -1;
-};
+// var strStr = function (haystack, needle) {
+//   const array = haystack.split(needle).join(' ');
+//   console.log(array);
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] === ' ') {
+//       return i;
+//     }
+//   }
+//   return -1;
+// };
 
-console.log(strStr('hello', 'll'));
+// console.log(strStr('hello', 'll'));
+
+// 30. Check if Object Instance of Class
+// Write a function that checks if a given value is an instance of a given class or superclass. For this problem, an object is considered an instance of a given class if that object has access to that class's methods.
+// There are no constraints on the data types that can be passed to the function. For example, the value or the class could be undefined.
+
+// Example 1:
+// Input: func = () => checkIfInstanceOf(new Date(), Date)
+// Output: true
+// Explanation: The object returned by the Date constructor is, by definition, an instance of Date.
+
+// var checkIfInstanceOf = function (obj, classFunction) {
+//   return Object.getPrototypeOf(obj) === classFunction.prototype;
+// };
+
+// console.log(checkIfInstanceOf(new Date(), Date));
+
+// 31.
