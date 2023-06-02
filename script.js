@@ -867,9 +867,29 @@
 // Input: s = "anagram", t = "nagaram"
 // Output: true
 
+// var isAnagram = function (s, t) {
+//   const sortedS = s.split('').sort().join('');
+//   const sortedt = t.split('').sort().join('');
+//   if (sortedS === sortedt) return true;
+//   return false;
+// };
+
 var isAnagram = function (s, t) {
-  const sortedS = s.split('').sort().join('');
-  const sortedt = t.split('').sort().join('');
-  if (sortedS === sortedt) return true;
-  return false;
+  if (s.length !== t.length) return false;
+  const sCount = {};
+  const tCount = {};
+  const N = s.length;
+  for (let i = 0; i < N; i++) {
+    if (!sCount[s[i]]) sCount[s[i]] = 0;
+    sCount[s[i]]++;
+    if (!tCount[t[i]]) tCount[t[i]] = 0;
+    tCount[t[i]]++;
+  }
+  for (let ch in sCount) {
+    console.log(sCount[ch], tCount[ch]);
+    if (sCount[ch] !== tCount[ch]) return false;
+  }
+  return true;
 };
+
+console.log(isAnagram('rat', 'car'));
