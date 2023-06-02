@@ -847,14 +847,29 @@
 // Input: nums = [1,2,3,1]
 // Output: true
 
-var containsDuplicate = function (nums) {
-  const sorted = nums.sort();
-  for (let i = 0; i < sorted.length; i++) {
-    if (sorted[i] === sorted[i + 1]) {
-      return true;
-    }
-  }
+// var containsDuplicate = function (nums) {
+//   const sorted = nums.sort();
+//   for (let i = 0; i < sorted.length; i++) {
+//     if (sorted[i] === sorted[i + 1]) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
+
+// containsDuplicate([2, 14, 18, 22, 22]);
+
+//33. Valid Anagram
+// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+// Example 1:
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+
+var isAnagram = function (s, t) {
+  const sortedS = s.split('').sort().join('');
+  const sortedt = t.split('').sort().join('');
+  if (sortedS === sortedt) return true;
   return false;
 };
-
-containsDuplicate([2, 14, 18, 22, 22]);
