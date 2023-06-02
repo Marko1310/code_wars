@@ -822,4 +822,39 @@
 
 // console.log(checkIfInstanceOf(new Date(), Date));
 
-// 31.
+// 31.Add Two Numbers
+
+// You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+// Input: l1 = [2,4,3], l2 = [5,6,4]
+// Output: [7,0,8]
+// Explanation: 342 + 465 = 807.
+
+// var addTwoNumbers = function (l1, l2) {
+//   const k1 = Number(l1.reverse().join(''));
+//   const k2 = Number(l2.reverse().join(''));
+//   const sum = (k1 + k2).toString().split('').reverse();
+//   return sum;
+// };
+
+// addTwoNumbers([2, 4, 3], [5, 6, 4]);
+
+//32.Contains Duplicate
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+// Example 1:
+// Input: nums = [1,2,3,1]
+// Output: true
+
+var containsDuplicate = function (nums) {
+  const sorted = nums.sort();
+  for (let i = 0; i < sorted.length; i++) {
+    if (sorted[i] === sorted[i + 1]) {
+      return true;
+    }
+  }
+  return false;
+};
+
+containsDuplicate([2, 14, 18, 22, 22]);
