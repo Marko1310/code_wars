@@ -921,14 +921,47 @@
 // Input: strs = [""]
 // Output: [[""]]
 
-var groupAnagrams = function (strs) {
-  let hash = {};
-  for (let el of strs) {
-    let sorted = el.split('').sort().join('');
-    if (!hash[sorted]) hash[sorted] = [];
-    hash[sorted].push(el);
+// var groupAnagrams = function (strs) {
+//   let hash = {};
+//   for (let el of strs) {
+//     let sorted = el.split('').sort().join('');
+//     if (!hash[sorted]) hash[sorted] = [];
+//     hash[sorted].push(el);
+//   }
+//   return Object.values(hash);
+// };
+// console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+// groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);
+
+//36. Top K Frequent Elements
+// Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+// Example 1:
+// Input: nums = [1,1,1,2,2,3], k = 2
+// Output: [1,2]
+
+var topKFrequent = function (nums, k) {
+  const hash = {};
+  for (let el of nums) {
+    if (!hash[el]) hash[el] = 0;
+    hash[el]++;
   }
-  return Object.values(hash);
+  let bucket = [];
+  for (let i = 0; i < nums.length + 1; i++) {
+    bucket.push([]);
+  }
+  for (const key in hash) {
+    bucket[hash[key]].push(key);
+  }
+  let solution = [];
+  for (let i = bucket.length - 1; i >= 0; i--) {
+    if (bucket[i].length > 0) {
+      solution = [...solution, ...bucket[i]];
+      if (solution.length === k) {
+        return solution;
+      }
+    }
+  }
 };
-console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
-groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);
+
+console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
+topKFrequent([1, 1, 1, 2, 2, 3], 2);
