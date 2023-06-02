@@ -894,16 +894,41 @@
 
 // console.log(isAnagram('rat', 'car'));
 
-var twoSum = function (nums, target) {
-  const previousValue = {};
-  for (let i = 0; i < nums.length; i++) {
-    const currentNumber = nums[i];
-    const neededValue = target - currentNumber;
-    const index2 = previousValue[neededValue];
-    if (index2 != null) {
-      return [index2, i];
-    }
-    previousValue[currentNumber] = i;
+//34. Two sum
+// var twoSum = function (nums, target) {
+//   const previousValue = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     const currentNumber = nums[i];
+//     const neededValue = target - currentNumber;
+//     const index2 = previousValue[neededValue];
+//     if (index2 != null) {
+//       return [index2, i];
+//     }
+//     previousValue[currentNumber] = i;
+//   }
+//   console.log(previousValue);
+// };
+
+//35. Group Anagrams
+// Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+// Example 1:
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+// Example 2:
+// Input: strs = [""]
+// Output: [[""]]
+
+var groupAnagrams = function (strs) {
+  let hash = {};
+  for (let el of strs) {
+    let sorted = el.split('').sort().join('');
+    if (!hash[sorted]) hash[sorted] = [];
+    hash[sorted].push(el);
   }
-  console.log(previousValue);
+  return Object.values(hash);
 };
+console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);
