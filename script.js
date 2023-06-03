@@ -939,29 +939,65 @@
 // Input: nums = [1,1,1,2,2,3], k = 2
 // Output: [1,2]
 
-var topKFrequent = function (nums, k) {
-  const hash = {};
-  for (let el of nums) {
-    if (!hash[el]) hash[el] = 0;
-    hash[el]++;
+// var topKFrequent = function (nums, k) {
+//   const hash = {};
+//   for (let el of nums) {
+//     if (!hash[el]) hash[el] = 0;
+//     hash[el]++;
+//   }
+//   let bucket = [];
+//   for (let i = 0; i < nums.length + 1; i++) {
+//     bucket.push([]);
+//   }
+//   for (const key in hash) {
+//     bucket[hash[key]].push(key);
+//   }
+//   let solution = [];
+//   for (let i = bucket.length - 1; i >= 0; i--) {
+//     if (bucket[i].length > 0) {
+//       solution = [...solution, ...bucket[i]];
+//       if (solution.length === k) {
+//         return solution;
+//       }
+//     }
+//   }
+// };
+
+// console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
+// topKFrequent([1, 1, 1, 2, 2, 3], 2);
+
+//37. Valid Palindrome
+// A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+// Given a string s, return true if it is a palindrome, or false otherwise.
+
+// Example 1:
+// Input: s = "A man, a plan, a canal: Panama"
+// Output: true
+// Explanation: "amanaplanacanalpanama" is a palindrome.
+
+var isPalindrome = function (s) {
+  const cleanedString = cleanUp(s);
+  for (let i = 0; i < cleanedString.length; i++) {
+    if (cleanedString[i].toLowerCase() !== cleanedString[cleanedString.length - i - 1].toLowerCase()) return false;
   }
-  let bucket = [];
-  for (let i = 0; i < nums.length + 1; i++) {
-    bucket.push([]);
-  }
-  for (const key in hash) {
-    bucket[hash[key]].push(key);
-  }
-  let solution = [];
-  for (let i = bucket.length - 1; i >= 0; i--) {
-    if (bucket[i].length > 0) {
-      solution = [...solution, ...bucket[i]];
-      if (solution.length === k) {
-        return solution;
-      }
-    }
-  }
+  return true;
 };
 
-console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
-topKFrequent([1, 1, 1, 2, 2, 3], 2);
+function cleanUp(str) {
+  let char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+  let newString = '';
+
+  for (let i = 0; i < str.length; i++) {
+    let lowerCase = str[i].toLowerCase();
+
+    if (char.indexOf(lowerCase) !== -1) {
+      newString += lowerCase;
+    }
+  }
+  console.log(newString);
+  return newString;
+}
+
+// console.log(isPalindrome('A man, a plan, a canal: Panama'));
+console.log(isPalindrome('A man, a plan, a canal: Panama'));
