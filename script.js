@@ -975,29 +975,74 @@
 // Output: true
 // Explanation: "amanaplanacanalpanama" is a palindrome.
 
-var isPalindrome = function (s) {
-  const cleanedString = cleanUp(s);
-  for (let i = 0; i < cleanedString.length; i++) {
-    if (cleanedString[i].toLowerCase() !== cleanedString[cleanedString.length - i - 1].toLowerCase()) return false;
+// var isPalindrome = function (s) {
+//   const cleanedString = cleanUp(s);
+//   for (let i = 0; i < cleanedString.length; i++) {
+//     if (cleanedString[i].toLowerCase() !== cleanedString[cleanedString.length - i - 1].toLowerCase()) return false;
+//   }
+//   return true;
+// };
+
+// function cleanUp(str) {
+//   let char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+//   let newString = '';
+
+//   for (let i = 0; i < str.length; i++) {
+//     let lowerCase = str[i].toLowerCase();
+
+//     if (char.indexOf(lowerCase) !== -1) {
+//       newString += lowerCase;
+//     }
+//   }
+//   console.log(newString);
+//   return newString;
+// }
+
+// // console.log(isPalindrome('A man, a plan, a canal: Panama'));
+// console.log(isPalindrome('A man, a plan, a canal: Panama'));
+
+////////////////// STACK IN JS ////////////////////
+class Stack {
+  constructor() {
+    this.count = 0;
+    this.storage = {};
   }
-  return true;
-};
 
-function cleanUp(str) {
-  let char = 'abcdefghijklmnopqrstuvwxyz0123456789';
-
-  let newString = '';
-
-  for (let i = 0; i < str.length; i++) {
-    let lowerCase = str[i].toLowerCase();
-
-    if (char.indexOf(lowerCase) !== -1) {
-      newString += lowerCase;
-    }
+  // Adds value onto the end of the stack
+  push(value) {
+    this.storage[this.count] = value;
+    this.count++;
   }
-  console.log(newString);
-  return newString;
+
+  // Removes and returns the value at the end of the stack
+  pop() {
+    if (this.count === 0) return undefined;
+
+    this.count--;
+    let result = this.storage[this.count];
+    delete this.storage[this.count];
+    return result;
+  }
+
+  // Return the size of stack
+  size() {
+    return this.count;
+  }
+
+  // Return the value at the end of the stack
+  peek() {
+    return this.storage[this.count - 1];
+  }
 }
 
-// console.log(isPalindrome('A man, a plan, a canal: Panama'));
-console.log(isPalindrome('A man, a plan, a canal: Panama'));
+const stack = new Stack();
+console.log(stack);
+
+stack.push('something');
+stack.push('something else');
+stack.pop();
+console.log(stack.size());
+console.log(stack.peek());
+
+////////////////////////////////////////////////////////
