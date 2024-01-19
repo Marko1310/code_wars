@@ -1031,25 +1031,79 @@
 // Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
 // The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
 
-var merge = function (nums1, m, nums2, n) {
-  let first = m - 1;
-  let second = n - 1;
-  let i = m + n - 1;
-  while (second >= 0) {
-    let firstVal = nums1[first];
-    let secondVal = nums2[second];
+// var merge = function (nums1, m, nums2, n) {
+//   let first = m - 1;
+//   let second = n - 1;
+//   let i = m + n - 1;
+//   while (second >= 0) {
+//     let firstVal = nums1[first];
+//     let secondVal = nums2[second];
 
-    if (firstVal > secondVal) {
-      nums1[i] = firstVal;
-      i--;
-      first--;
-    } else {
-      nums1[i] = secondVal;
-      i--;
-      second--;
-    }
-  }
-  console.log(nums1);
+//     if (firstVal > secondVal) {
+//       nums1[i] = firstVal;
+//       i--;
+//       first--;
+//     } else {
+//       nums1[i] = secondVal;
+//       i--;
+//       second--;
+//     }
+//   }
+//   console.log(nums1);
+// };
+
+// merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);
+
+// const A = [8, 1, 1, 7, 4];
+// const N = 4;
+// const hash = {};
+
+// function Logic() {
+// 	const hash = {};
+// 	for (let i = 0; i < A.length; i++) {
+// 		if (!hash[A[i]]) {
+// 			hash[A[i]] = 0;
+// 		}
+// 		hash[A[i]]++;
+// 	}
+// 	const sortedArray = Object.entries(hash).sort((a, b) => b[1] - a[1]);
+// 	let sum = 0;
+// 	let count = 0;
+// 	for (let i = 0; i < sortedArray.length; i++) {
+// 		if (sortedArray[i][1] != i) {
+// 			sum += Number(sortedArray[i][0]);
+// 			count++;
+// 			console.log(sortedArray[i][1]);
+// 		}
+// 	}
+// 	console.log(sum);
+// 	const result = sum / count;
+// 	console.log(result);
+// }
+// Logic();
+
+//40. Reverse linked list
+// Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+// Example 1:
+// Input: head = [1,2,3,4,5]
+// Output: [5,4,3,2,1]
+
+// Example 2:
+// Input: head = [1,2]
+// Output: [2,1]
+
+// Example 3:
+// Input: head = []
+// Output: []
+
+const reverseList = function (head) {
+	let prev = null;
+	let current = head;
+	while (current !== null) {
+		const next = current.next;
+		current.next = prev;
+		prev = current;
+		current = next;
+	}
 };
-
-merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);
