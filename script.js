@@ -1146,35 +1146,41 @@
 // Input: head = [1,2,2,1]
 // Output: true
 
-const isPalindrome = (head) => {
-	if (head == null || head.next == null) return true;
+// const isPalindrome = (head) => {
+// 	if (head == null || head.next == null) return true;
 
-	let slow = head;
-	let fast = head;
-	while (fast.next !== null && fast.next.next !== null) {
-		slow = slow.next;
-		fast = fast.next.next;
-	}
-	slow.next = reverseList(slow.next);
-	slow = slow.next;
+// 	let slow = head;
+// 	let fast = head;
+// 	while (fast.next !== null && fast.next.next !== null) {
+// 		slow = slow.next;
+// 		fast = fast.next.next;
+// 	}
+// 	slow.next = reverseList(slow.next);
+// 	slow = slow.next;
 
-	while (slow !== null) {
-		if (head.val !== slow.val) return false;
-		head = head.next;
-		slow = slow.next;
-	}
-	return true;
-};
+// 	while (slow !== null) {
+// 		if (head.val !== slow.val) return false;
+// 		head = head.next;
+// 		slow = slow.next;
+// 	}
+// 	return true;
+// };
 
-const reverseList = (middle) => {
-	let prev = null;
-	let next = null;
+// const reverseList = (middle) => {
+// 	let prev = null;
+// 	let next = null;
 
-	while (middle !== null) {
-		next = middle.next;
-		middle.next = prev;
-		prev = middle;
-		middle = next;
-	}
-	return prev;
+// 	while (middle !== null) {
+// 		next = middle.next;
+// 		middle.next = prev;
+// 		prev = middle;
+// 		middle = next;
+// 	}
+// 	return prev;
+// };
+
+// 43. Return Length of Arguments Passed
+
+var argumentsLength = function (...args) {
+	return args.length;
 };
