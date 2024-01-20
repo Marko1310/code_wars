@@ -1181,6 +1181,37 @@
 
 // 43. Return Length of Arguments Passed
 
-var argumentsLength = function (...args) {
-	return args.length;
+// var argumentsLength = function (...args) {
+// 	return args.length;
+// };
+
+// 44. Counter II
+// Write a function createCounter. It should accept an initial integer init. It should return an object with three functions.
+// Example 1:
+// Input: init = 5, calls = ["increment","reset","decrement"]
+// Output: [6,5,4]
+// Explanation:
+// const counter = createCounter(5);
+// counter.increment(); // 6
+// counter.reset(); // 5
+// counter.decrement(); // 4
+
+const createCounter = (init) => {
+	let counter = init;
+
+	const increment = () => {
+		return ++counter;
+	};
+
+	const decrement = () => {
+		return --counter;
+	};
+	const reset = () => {
+		counter = init;
+		return counter;
+	};
+	return {increment, decrement, reset};
 };
+
+const counter = createCounter(5);
+console.log(counter.decrement());
