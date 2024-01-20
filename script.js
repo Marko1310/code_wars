@@ -1147,21 +1147,34 @@
 // Output: true
 
 const isPalindrome = (head) => {
-	let arr = [];
-	while (head) {
-		arr.push(head.val);
-		head = head.next;
+	if (head == null || head.next == null) return true;
+
+	let slow = head;
+	let fast = head;
+	while (fast.next !== null && fast.next.next !== null) {
+		slow = slow.next;
+		fast = fast.next.next;
 	}
+	slow.next = reverseList(slow.next);
+	slow = slow.next;
 
-	let left = 0;
-	let right = arr.length - 1;
-
-	while (left <= right) {
-		if (arr[left] !== arr[right]) {
-			return false;
-		}
-		left++;
-		right--;
+	while (slow !== null) {
+		if (head.val !== slow.val) return false;
+		head = head.next;
+		slow = slow.next;
 	}
 	return true;
+};
+
+const reverseList = (middle) => {
+	let prev = null;
+	let next = null;
+
+	while (middle !== null) {
+		next = middle.next;
+		middle.next = prev;
+		prev = middle;
+		middle = next;
+	}
+	return prev;
 };
