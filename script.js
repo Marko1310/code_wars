@@ -1122,19 +1122,46 @@
 // Output: [4,5,6]
 // Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
 
-const middleNode = function (head) {
-	let counter = 0;
-	let current = head;
-	while (current !== null) {
-		counter++;
-		current = current.next;
+// const middleNode = function (head) {
+// 	let counter = 0;
+// 	let current = head;
+// 	while (current !== null) {
+// 		counter++;
+// 		current = current.next;
+// 	}
+
+// 	current = head;
+// 	const max = Math.floor(counter / 2);
+
+// 	for (let i = 0; i < max; i++) {
+// 		current = current.next;
+// 	}
+// 	return current;
+// };
+
+// 42. Palindrome Linked List
+//Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+
+// Example 1:
+// Input: head = [1,2,2,1]
+// Output: true
+
+const isPalindrome = (head) => {
+	let arr = [];
+	while (head) {
+		arr.push(head.val);
+		head = head.next;
 	}
 
-	current = head;
-	const max = Math.floor(counter / 2);
+	let left = 0;
+	let right = arr.length - 1;
 
-	for (let i = 0; i < max; i++) {
-		current = current.next;
+	while (left <= right) {
+		if (arr[left] !== arr[right]) {
+			return false;
+		}
+		left++;
+		right--;
 	}
-	return current;
+	return true;
 };
