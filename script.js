@@ -1196,22 +1196,50 @@
 // counter.reset(); // 5
 // counter.decrement(); // 4
 
-const createCounter = (init) => {
-	let counter = init;
+// const createCounter = (init) => {
+// 	let counter = init;
 
-	const increment = () => {
-		return ++counter;
+// 	const increment = () => {
+// 		return ++counter;
+// 	};
+
+// 	const decrement = () => {
+// 		return --counter;
+// 	};
+// 	const reset = () => {
+// 		counter = init;
+// 		return counter;
+// 	};
+// 	return {increment, decrement, reset};
+// };
+
+// const counter = createCounter(5);
+// console.log(counter.decrement());
+
+//45. Array Wrapper
+// Create a class ArrayWrapper that accepts an array of integers in its constructor. This class should have two features:
+// When two instances of this class are added together with the + operator, the resulting value is the sum of all the elements in both arrays.
+// When the String() function is called on the instance, it will return a comma separated string surrounded by brackets. For example, [1,2,3].
+
+// Example 1:
+// Input: nums = [[1,2],[3,4]], operation = "Add"
+// Output: 10
+// Explanation:
+// const obj1 = new ArrayWrapper([1,2]);
+// const obj2 = new ArrayWrapper([3,4]);
+// obj1 + obj2; // 10
+
+class ArrayWrapper {
+	constructor(array) {
+		this.array = array;
+	}
+	valueOf = function () {
+		return this.array.reduce((acc, current) => acc + current, 0);
 	};
 
-	const decrement = () => {
-		return --counter;
+	toString = function () {
+		return '[' + this.array.join(',') + ']';
 	};
-	const reset = () => {
-		counter = init;
-		return counter;
-	};
-	return {increment, decrement, reset};
-};
-
-const counter = createCounter(5);
-console.log(counter.decrement());
+}
+const arr = new ArrayWrapper([1, 2, 3]);
+console.log(arr.valueOf());
