@@ -1229,17 +1229,39 @@
 // const obj2 = new ArrayWrapper([3,4]);
 // obj1 + obj2; // 10
 
-class ArrayWrapper {
-	constructor(array) {
-		this.array = array;
-	}
-	valueOf = function () {
-		return this.array.reduce((acc, current) => acc + current, 0);
-	};
+// class ArrayWrapper {
+// 	constructor(array) {
+// 		this.array = array;
+// 	}
+// 	valueOf = function () {
+// 		return this.array.reduce((acc, current) => acc + current, 0);
+// 	};
 
-	toString = function () {
-		return '[' + this.array.join(',') + ']';
+// 	toString = function () {
+// 		return '[' + this.array.join(',') + ']';
+// 	};
+// }
+// const arr = new ArrayWrapper([1, 2, 3]);
+// console.log(arr.valueOf());
+
+//46. To Be Or Not To Be
+// Write a function "expect" that helps developers test their code. It should take in any value val and return an object with the following two functions.
+// toBe(val) accepts another value and returns true if the two values === each other. If they are not equal, it should throw an error "Not Equal".
+// notToBe(val) accepts another value and returns true if the two values !== each other. If they are equal, it should throw an error "Equal".
+
+// Example 1:
+// Input: func = () => expect(5).toBe(5)
+// Output: {"value": true}
+// Explanation: 5 === 5 so this expression returns true.
+const expect = function (val) {
+	return {
+		toBe(input) {
+			if (val === input) return true;
+			else throw new Error('Not Equal');
+		},
+		notToBe(input) {
+			if (val === input) throw new Error('Not Equal');
+			else return true;
+		},
 	};
-}
-const arr = new ArrayWrapper([1, 2, 3]);
-console.log(arr.valueOf());
+};
