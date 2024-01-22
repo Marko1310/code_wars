@@ -1306,26 +1306,51 @@
 // Output: 58
 // Explanation: L = 50, V= 5, III = 3.
 
-const romanToInt = function (s) {
-	const sym = {
-		I: 1,
-		V: 5,
-		X: 10,
-		L: 50,
-		C: 100,
-		D: 500,
-		M: 1000,
-	};
-	const result = [];
-	for (let i = 0; i < s.length; i++) {
-		if (sym[s[i]] < sym[s[i + 1]]) {
-			result.push(-sym[s[i]]);
-		} else {
-			result.push(sym[s[i]]);
+// const romanToInt = function (s) {
+// 	const sym = {
+// 		I: 1,
+// 		V: 5,
+// 		X: 10,
+// 		L: 50,
+// 		C: 100,
+// 		D: 500,
+// 		M: 1000,
+// 	};
+// 	const result = [];
+// 	for (let i = 0; i < s.length; i++) {
+// 		if (sym[s[i]] < sym[s[i + 1]]) {
+// 			result.push(-sym[s[i]]);
+// 		} else {
+// 			result.push(sym[s[i]]);
+// 		}
+// 	}
+
+// 	return result.reduce((previous, current) => previous + current);
+// };
+
+// 48. Longest common prefix
+// Write a function to find the longest common prefix string amongst an array of strings.
+// If there is no common prefix, return an empty string "".
+
+// Example 1:
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
+
+// Example 2:
+// Input: strs = ["dog","racecar","car"]
+// Output: ""
+// Explanation: There is no common prefix among the input strings.
+
+const longestCommonPrefix = (arrayStrings) => {
+	arrayStrings.sort();
+	let prefix = '';
+	if (arrayStrings.length === 0) return prefix;
+	for (let i = 0; i < arrayStrings[0].length; i++) {
+		const character = arrayStrings[0][i];
+		for (let j = 1; j < arrayStrings.length; j++) {
+			if (arrayStrings[j][i] !== character) return prefix;
 		}
+		prefix = prefix + character;
 	}
-
-	return result.reduce((previous, current) => previous + current);
+	return prefix;
 };
-
-romanToInt('MCMXCIV');
