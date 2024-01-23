@@ -1440,11 +1440,31 @@ const removeElement = function (nums, val) {
 // // Output: 4
 // Explanation: The last word is "moon" with length 4.
 
-const lenghtOfLastWord = (s) => {
-	const arr = s.split(' ');
-	for (let i = arr.length - 1; i >= 0; i--) {
-		console.log(i);
-		console.log(arr[i]);
-		if (arr[i] !== '') return arr[i].length;
+// const lenghtOfLastWord = (s) => {
+// 	const arr = s.split(' ');
+// 	for (let i = arr.length - 1; i >= 0; i--) {
+// 		console.log(i);
+// 		console.log(arr[i]);
+// 		if (arr[i] !== '') return arr[i].length;
+// 	}
+// };
+
+// 53. Remove duplicates from sorted list
+// Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+// Input: head = [1,1,2]
+// Output: [1,2]
+
+// Input: head = [1,1,2,3,3]
+// Output: [1,2,3]
+
+const deleteDuplicates = function (head) {
+	let current = head;
+	while (current && current.next) {
+		if (current.val === current.val.next) {
+			current.next = current.next.next;
+		} else {
+			current = current.next;
+		}
 	}
+	return head;
 };
