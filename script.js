@@ -1412,16 +1412,39 @@ const removeElement = function (nums, val) {
 // Input: nums = [1,3,5,6], target = 2
 // Output: 1
 
-const searchInsert = function (nums, target) {
-	let left = 0,
-		right = nums.length,
-		mid;
-	while (left <= right) {
-		mid = Math.floor((left + right) / 2);
-		if (nums[mid] === target) return mid;
-		else if (nums[mid] < target) left = mid + 1;
-		else right = mid - 1;
+// const searchInsert = function (nums, target) {
+// 	let left = 0,
+// 		right = nums.length,
+// 		mid;
+// 	while (left <= right) {
+// 		mid = Math.floor((left + right) / 2);
+// 		if (nums[mid] === target) return mid;
+// 		else if (nums[mid] < target) left = mid + 1;
+// 		else right = mid - 1;
+// 	}
+// };
+
+// console.log(searchInsert([1, 3, 5, 6], 3));
+
+// // 52. Length of last word
+// // Given a string s consisting of words and spaces, return the length of the last word in the string.
+// // A word is a maximal substring consisting of non-space characters only.
+
+// // Example 1:
+// // Input: s = "Hello World"
+// // Output: 5
+// // Explanation: The last word is "World" with length 5.
+
+// // Example 2:
+// // Input: s = "   fly me   to   the moon  "
+// // Output: 4
+// Explanation: The last word is "moon" with length 4.
+
+const lenghtOfLastWord = (s) => {
+	const arr = s.split(' ');
+	for (let i = arr.length - 1; i >= 0; i--) {
+		console.log(i);
+		console.log(arr[i]);
+		if (arr[i] !== '') return arr[i].length;
 	}
 };
-
-console.log(searchInsert([1, 3, 5, 6], 3));
