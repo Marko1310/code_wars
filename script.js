@@ -1505,5 +1505,15 @@ const removeElement = function (nums, val) {
 // Input: nums = [4,1,2,1,2]
 // Output: 4
 
-const singleNumber = function (nums) {};
-console.log(singleNumber([2, 2, 2, 1]));
+const singleNumber = function (nums) {
+	let hashMap = {};
+	for (let i = 0; i < nums.length; i++) {
+		if (hashMap[nums[i]]) hashMap[nums[i]] = false;
+		else hashMap[nums[i]] = true;
+	}
+
+	for (let [key, value] of Object.entries(hashMap)) {
+		if (value) return key;
+	}
+};
+console.log(singleNumber([2, 2, 3, 3, 4, 1]));
