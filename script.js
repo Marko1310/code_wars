@@ -1530,4 +1530,22 @@ const removeElement = function (nums, val) {
 // Input: nums = [2,2,1,1,1,2,2]
 // Output: 2
 
-const majorityElement = function (nums) {};
+const majorityElement = function (nums) {
+	let element = 0;
+	let count = 0;
+
+	for (let i = 0; i < nums.length; i++) {
+		if (count === 0) {
+			element = nums[i];
+		}
+		if (nums[i] === element) {
+			count++;
+		} else {
+			count--;
+		}
+	}
+	return element;
+};
+
+// majorityElement([2, 2, 1, 1, 1, 2, 2]);
+console.log(majorityElement([6, 5, 6]));
