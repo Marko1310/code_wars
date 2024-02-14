@@ -1530,22 +1530,46 @@ const removeElement = function (nums, val) {
 // Input: nums = [2,2,1,1,1,2,2]
 // Output: 2
 
-const majorityElement = function (nums) {
-	let element = 0;
-	let count = 0;
+// const majorityElement = function (nums) {
+// 	let element = 0;
+// 	let count = 0;
 
-	for (let i = 0; i < nums.length; i++) {
-		if (count === 0) {
-			element = nums[i];
-		}
-		if (nums[i] === element) {
-			count++;
-		} else {
-			count--;
-		}
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (count === 0) {
+// 			element = nums[i];
+// 		}
+// 		if (nums[i] === element) {
+// 			count++;
+// 		} else {
+// 			count--;
+// 		}
+// 	}
+// 	return element;
+// };
+
+// // majorityElement([2, 2, 1, 1, 1, 2, 2]);
+// console.log(majorityElement([6, 5, 6]));
+
+// 57. Add Digits
+// Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+// Example 1:
+// Input: num = 38
+
+// Output: 2
+// Explanation: The process is
+// 38 --> 3 + 8 --> 11
+// 11 --> 1 + 1 --> 2
+// Since 2 has only one digit, return it.
+
+const addDigits = function (num) {
+	const numString = num.toString();
+	if (numString.length === 1) return num;
+
+	let sum = 0;
+	for (let i = 0; i < numString.length; i++) {
+		sum += parseInt(numString[i]);
 	}
-	return element;
+	return addDigits(sum);
 };
 
-// majorityElement([2, 2, 1, 1, 1, 2, 2]);
-console.log(majorityElement([6, 5, 6]));
+console.log(addDigits(38));
