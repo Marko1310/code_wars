@@ -1561,15 +1561,33 @@ const removeElement = function (nums, val) {
 // 11 --> 1 + 1 --> 2
 // Since 2 has only one digit, return it.
 
-const addDigits = function (num) {
-	const numString = num.toString();
-	if (numString.length === 1) return num;
+// const addDigits = function (num) {
+// 	const numString = num.toString();
+// 	if (numString.length === 1) return num;
 
-	let sum = 0;
-	for (let i = 0; i < numString.length; i++) {
-		sum += parseInt(numString[i]);
+// 	let sum = 0;
+// 	for (let i = 0; i < numString.length; i++) {
+// 		sum += parseInt(numString[i]);
+// 	}
+// 	return addDigits(sum);
+// };
+
+// console.log(addDigits(38));
+
+// 58. Missing number
+// Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+// Example 1:
+// Input: nums = [3,0,1]
+// Output: 2
+// Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+
+const missingNumber = (nums) => {
+	const hash = {};
+	for (let i = 0; i < nums.length; i++) {
+		hash[nums[i]] = nums[i];
 	}
-	return addDigits(sum);
+	for (let i = 0; i < nums.length; i++) {
+		if (hash[i] === undefined) return i;
+	}
 };
-
-console.log(addDigits(38));
+console.log(missingNumber([3, 0, 1, 4, 5]));
