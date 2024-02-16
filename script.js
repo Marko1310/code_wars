@@ -1591,3 +1591,12 @@ const missingNumber = (nums) => {
 	}
 };
 console.log(missingNumber([3, 0, 1, 4, 5]));
+
+const missingNumber2 = (nums) => {
+	const n = nums.length;
+	const expectedSum = (n * (n + 1)) / 2;
+	const actualSum = nums.reduce((sum, num) => sum + num, 0);
+
+	return expectedSum - actualSum;
+};
+console.log(missingNumber2([3, 0, 1, 4, 5]));
