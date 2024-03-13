@@ -1628,12 +1628,36 @@
 // Examples:
 // reverse('hi') === 'ih'
 
-const reverse = function (str) {
-	let reversed = '';
+// const reverse = function (str) {
+// 	let reversed = '';
+// 	for (let i = 0; i < str.length; i++) {
+// 		reversed = str[i] + reversed;
+// 	}
+// 	return reversed;
+// };
+
+// reverse('hi');
+
+//3. Given a string, return a characther most commonly used in a string
+// Example: maxChar('abcccccccd') === 'c';
+
+const maxChar = function (str) {
+	let max = 0;
+	let char = '';
+	let hash = {};
 	for (let i = 0; i < str.length; i++) {
-		reversed = str[i] + reversed;
+		if (!hash[str[i]]) {
+			hash[str[i]] = 1;
+		} else {
+			hash[str[i]]++;
+		}
+		if (hash[str[i]] > max) {
+			max = hash[str[i]];
+			char = str[i];
+		}
 	}
-	return reversed;
+
+	console.log(char);
 };
 
-reverse('hi');
+maxChar('aabcaacccaacacacda');
