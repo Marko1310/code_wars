@@ -1390,15 +1390,15 @@
 // Explanation: Your function should return k = 2, with the first two elements of nums being 2.
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 
-const removeElement = function (nums, val) {
-	let k = 0;
-	for (let i = 0; i < nums.length; i++) {
-		if (nums[i] !== val) {
-			nums[k] = nums[i];
-			k++;
-		}
-	}
-};
+// const removeElement = function (nums, val) {
+// 	let k = 0;
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (nums[i] !== val) {
+// 			nums[k] = nums[i];
+// 			k++;
+// 		}
+// 	}
+// };
 
 //51. Search insert position
 // Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
@@ -1581,22 +1581,59 @@ const removeElement = function (nums, val) {
 // Output: 2
 // Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
 
-const missingNumber = (nums) => {
-	const hash = {};
-	for (let i = 0; i < nums.length; i++) {
-		hash[nums[i]] = nums[i];
-	}
-	for (let i = 0; i < nums.length; i++) {
-		if (hash[i] === undefined) return i;
-	}
-};
-console.log(missingNumber([3, 0, 1, 4, 5]));
+// const missingNumber = (nums) => {
+// 	const hash = {};
+// 	for (let i = 0; i < nums.length; i++) {
+// 		hash[nums[i]] = nums[i];
+// 	}
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (hash[i] === undefined) return i;
+// 	}
+// };
+// console.log(missingNumber([3, 0, 1, 4, 5]));
 
-const missingNumber2 = (nums) => {
-	const n = nums.length;
-	const expectedSum = (n * (n + 1)) / 2;
-	const actualSum = nums.reduce((sum, num) => sum + num, 0);
+// const missingNumber2 = (nums) => {
+// 	const n = nums.length;
+// 	const expectedSum = (n * (n + 1)) / 2;
+// 	const actualSum = nums.reduce((sum, num) => sum + num, 0);
 
-	return expectedSum - actualSum;
+// 	return expectedSum - actualSum;
+// };
+// console.log(missingNumber2([3, 0, 1, 4, 5]));
+
+// Side Tasks
+// 1. Task - find closest number to a given number in an array
+// const getClosestNumbers = function (array, number) {
+// 	let diff;
+// 	let arr = [];
+// 	for (let i = 0; i < array.length; i++) {
+// 		const abs = Math.abs(number - array[i]);
+
+// 		if (diff === undefined || abs < diff) {
+// 			diff = abs;
+// 			arr[0] = array[i];
+// 		} else if (abs === diff) arr[1] = array[i];
+// 	}
+
+// 	return arr;
+// };
+// const options = [
+// 	-908, -852, -475, -355, -102, -100, -55, -25, -18, -7, -6, -5, 0, 1, 7, 8, 99, 101, 122, 147, 5025, 5334, 7410,
+// ];
+// const number = 100;
+
+// console.log(getClosestNumbers(options, number));
+
+// 2. Given a string, return a new string with the reversed order of characters
+// Examples:
+// reverse('hi') === 'ih'
+
+const reverse = function (str) {
+	let reversed = '';
+	for (let i = 0; i < str.length; i++) {
+		reversed = str[i] + reversed;
+	}
+	return reversed;
 };
-console.log(missingNumber2([3, 0, 1, 4, 5]));
+
+reverse('hi');
