@@ -1641,23 +1641,23 @@
 //3. Given a string, return a characther most commonly used in a string
 // Example: maxChar('abcccccccd') === 'c';
 
-const maxChar = function (str) {
-	let max = 0;
-	let char = '';
-	let hash = {};
-	for (let i = 0; i < str.length; i++) {
-		if (!hash[str[i]]) {
-			hash[str[i]] = 1;
-		} else {
-			hash[str[i]]++;
-		}
-		if (hash[str[i]] > max) {
-			max = hash[str[i]];
-			char = str[i];
-		}
-	}
+// const maxChar = function (str) {
+// 	let max = 0;
+// 	let char = '';
+// 	let hash = {};
+// 	for (let i = 0; i < str.length; i++) {
+// 		if (!hash[str[i]]) {
+// 			hash[str[i]] = 1;
+// 		} else {
+// 			hash[str[i]]++;
+// 		}
+// 		if (hash[str[i]] > max) {
+// 			max = hash[str[i]];
+// 			char = str[i];
+// 		}
+// 	}
 
-	console.log(char);
-};
+// 	console.log(char);
+// };
 
-maxChar('aabcaacccaacacacda');
+// maxChar('aabcaacccaacacacda');
