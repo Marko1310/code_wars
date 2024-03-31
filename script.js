@@ -1796,25 +1796,48 @@
 // Input: s = "(]"
 // Output: false
 
-const isValid = function (s) {
-	let stack = [];
-	for (let ch of s) {
-		if (ch === '(' || ch === '[' || ch === '{') {
-			stack.push(ch);
-		} else {
-			if (
-				!stack.length ||
-				(ch === ')' && stack[stack.length - 1] !== '(') ||
-				(ch === ']' && stack[stack.length - 1] !== '[') ||
-				(ch === '}' && stack[stack.length - 1] !== '{')
-			) {
-				return false;
-			}
-			stack.pop();
+// const isValid = function (s) {
+// 	let stack = [];
+// 	for (let ch of s) {
+// 		if (ch === '(' || ch === '[' || ch === '{') {
+// 			stack.push(ch);
+// 		} else {
+// 			if (
+// 				!stack.length ||
+// 				(ch === ')' && stack[stack.length - 1] !== '(') ||
+// 				(ch === ']' && stack[stack.length - 1] !== '[') ||
+// 				(ch === '}' && stack[stack.length - 1] !== '{')
+// 			) {
+// 				return false;
+// 			}
+// 			stack.pop();
+// 		}
+// 	}
+// 	return stack.length === 0;
+// };
+
+// const s = '()[]{}';
+// console.log(isValid(s));
+
+//64. Contains Duplicates
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+// Example 1:
+// Input: nums = [1,2,3,1]
+// Output: true
+
+// Example 2:
+// Input: nums = [1,2,3,4]
+// Output: false
+
+const containsDuplicate = function (nums) {
+	const sorted = nums.sort();
+	for (let i = 0; i < nums.length - 1; i++) {
+		if (sorted[i] === sorted[i + 1]) {
+			return false;
 		}
 	}
-	return stack.length === 0;
+	return true;
 };
 
-const s = '()[]{}';
-console.log(isValid(s));
+console.log(containsDuplicate([1, 2, 3, 1]));
