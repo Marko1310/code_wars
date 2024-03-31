@@ -1766,13 +1766,55 @@
 // - ans = [nums[0],nums[1],nums[2],nums[3],nums[0],nums[1],nums[2],nums[3]]
 // - ans = [1,3,2,1,1,3,2,1]
 
-const getConcatenation = function (nums) {
-	const length = nums.length;
-	for (let i = 0; i < length; i++) {
-		nums.push(nums[i]);
+// const getConcatenation = function (nums) {
+// 	const length = nums.length;
+// 	for (let i = 0; i < length; i++) {
+// 		nums.push(nums[i]);
+// 	}
+// 	return nums;
+// };
+
+// const arr = [1, 2, 1];
+// getConcatenation(arr);
+
+//63. Valid Parantheses
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+// An input string is valid if:
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+// Example 1:
+// Input: s = "()"
+// Output: true
+
+// Example 2:
+// Input: s = "()[]{}"
+// Output: true
+
+// Example 3:
+// Input: s = "(]"
+// Output: false
+
+const isValid = function (s) {
+	let stack = [];
+	for (let ch of s) {
+		if (ch === '(' || ch === '[' || ch === '{') {
+			stack.push(ch);
+		} else {
+			if (
+				!stack.length ||
+				(ch === ')' && stack[stack.length - 1] !== '(') ||
+				(ch === ']' && stack[stack.length - 1] !== '[') ||
+				(ch === '}' && stack[stack.length - 1] !== '{')
+			) {
+				return false;
+			}
+			stack.pop();
+		}
 	}
-	return nums;
+	return stack.length === 0;
 };
 
-const arr = [1, 2, 1];
-getConcatenation(arr);
+const s = '()[]{}';
+console.log(isValid(s));
