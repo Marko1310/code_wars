@@ -1830,14 +1830,59 @@
 // Input: nums = [1,2,3,4]
 // Output: false
 
-const containsDuplicate = function (nums) {
-	const sorted = nums.sort();
-	for (let i = 0; i < nums.length - 1; i++) {
-		if (sorted[i] === sorted[i + 1]) {
+// const containsDuplicate = function (nums) {
+// 	const sorted = nums.sort();
+// 	for (let i = 0; i < nums.length - 1; i++) {
+// 		if (sorted[i] === sorted[i + 1]) {
+// 			return false;
+// 		}
+// 	}
+// 	return true;
+// };
+
+// console.log(containsDuplicate([1, 2, 3, 1]));
+
+// 65. Valid anagram
+// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+// Example 1:
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+
+// Example 2:
+// Input: s = "rat", t = "car"
+// Output: false
+
+const validAnagram = function (s, t) {
+	const hashS = {};
+	const hashT = {};
+	for (let letter of s) {
+		if (!hashS[letter]) {
+			hashS[letter] = 1;
+		} else {
+			hashS[letter]++;
+		}
+	}
+
+	for (let letter of t) {
+		if (!hashS[letter]) {
+			return false;
+		} else {
+			if (!hashT[letter]) {
+				hashT[letter] = 1;
+			} else {
+				hashT[letter]++;
+			}
+		}
+	}
+
+	for (let ch in hashS) {
+		if (hashS[ch] !== hashT[ch]) {
 			return false;
 		}
 	}
 	return true;
 };
 
-console.log(containsDuplicate([1, 2, 3, 1]));
+console.log(validAnagram('anagram', 'nagaram'));
