@@ -1733,16 +1733,46 @@
 // Output: [2,3,5,4,1,7]
 // Explanation: Since x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 then the answer is [2,3,5,4,1,7].
 
-const shuffle = function (nums, n) {
-	const arr = [];
-	let k = n;
-	for (let i = 0; i < n; i++) {
-		arr.push(nums[i]);
-		arr.push(nums[k]);
-		k++;
+// const shuffle = function (nums, n) {
+// 	const arr = [];
+// 	let k = n;
+// 	for (let i = 0; i < n; i++) {
+// 		arr.push(nums[i]);
+// 		arr.push(nums[k]);
+// 		k++;
+// 	}
+// 	return arr;
+// };
+
+// const arr = [2, 5, 1, 3, 4, 7];
+// shuffle(arr, 3);
+
+//62. Concatenation of Array
+// Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
+// Specifically, ans is the concatenation of two nums arrays.
+// Return the array ans.
+
+// Example 1:
+// Input: nums = [1,2,1]
+// Output: [1,2,1,1,2,1]
+// Explanation: The array ans is formed as follows:
+// - ans = [nums[0],nums[1],nums[2],nums[0],nums[1],nums[2]]
+// - ans = [1,2,1,1,2,1]
+
+// Example 2:
+// Input: nums = [1,3,2,1]
+// Output: [1,3,2,1,1,3,2,1]
+// Explanation: The array ans is formed as follows:
+// - ans = [nums[0],nums[1],nums[2],nums[3],nums[0],nums[1],nums[2],nums[3]]
+// - ans = [1,3,2,1,1,3,2,1]
+
+const getConcatenation = function (nums) {
+	const length = nums.length;
+	for (let i = 0; i < length; i++) {
+		nums.push(nums[i]);
 	}
-	return arr;
+	return nums;
 };
 
-const arr = [2, 5, 1, 3, 4, 7];
-shuffle(arr, 3);
+const arr = [1, 2, 1];
+getConcatenation(arr);
