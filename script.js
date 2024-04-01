@@ -1992,28 +1992,62 @@
 // Input: n = 2
 // Output: false
 
-const happyNumber = function (n) {
-	const visited = new Set();
-	let sum = n;
+// const happyNumber = function (n) {
+// 	const visited = new Set();
+// 	let sum = n;
 
-	while (sum !== 1) {
-		if (visited.has(sum)) return false;
-		if (!visited.has(sum)) {
-			visited.add(sum);
-			sum = sumOfSquares(sum);
+// 	while (sum !== 1) {
+// 		if (visited.has(sum)) return false;
+// 		if (!visited.has(sum)) {
+// 			visited.add(sum);
+// 			sum = sumOfSquares(sum);
+// 		}
+// 	}
+// 	return true;
+// };
+
+// function sumOfSquares(n) {
+// 	let sum = 0;
+// 	while (n > 0) {
+// 		let digit = n % 10;
+// 		sum += digit ** 2;
+// 		n = Math.floor(n / 10);
+// 	}
+// 	return sum;
+// }
+
+// console.log(happyNumber(2));
+
+//70. Contains Duplicate II
+// Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+
+// Example 1:
+// Input: nums = [1,2,3,1], k = 3
+// Output: true
+
+// Example 2:
+// Input: nums = [1,0,1,1], k = 1
+// Output: true
+
+// Example 3:
+// Input: nums = [1,2,3,1,2,3], k = 2
+// Output: false
+
+const containsNearbyDuplicate = function (nums, k) {
+	let hash = {};
+
+	for (let i = 0; i < nums.length; i++) {
+		console.log(hash[i]);
+		if (hash[nums[i]] !== undefined && Math.abs(i - hash[nums[i]]) <= k) {
+			return true;
+		} else {
+			hash[nums[i]] = i;
+			console.log(hash);
 		}
 	}
-	return true;
+	return false;
 };
 
-function sumOfSquares(n) {
-	let sum = 0;
-	while (n > 0) {
-		let digit = n % 10;
-		sum += digit ** 2;
-		n = Math.floor(n / 10);
-	}
-	return sum;
-}
-
-console.log(happyNumber(2));
+const arr = [1, 2, 3, 1];
+const k = 3;
+console.log(containsNearbyDuplicate(arr, k));
