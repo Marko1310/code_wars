@@ -2088,13 +2088,37 @@
 // Output: true
 // Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
 
-const isUglyNumber = (num) => {
-	if (num <= 0) return false;
-	while (num > 1) {
-		if (num % 2 === 0) num = num / 2;
-		else if (num % 3 === 0) num = num / 3;
-		else if (num % 5 === 0) num = num / 5;
-		else return false;
+// const isUglyNumber = (num) => {
+// 	if (num <= 0) return false;
+// 	while (num > 1) {
+// 		if (num % 2 === 0) num = num / 2;
+// 		else if (num % 3 === 0) num = num / 3;
+// 		else if (num % 5 === 0) num = num / 5;
+// 		else return false;
+// 	}
+// 	return true;
+// };
+
+//73. Move Zeroes
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+// Note that you must do this in-place without making a copy of the array.
+
+// Example 1:
+// Input: nums = [0,1,0,3,12]
+// Output: [1,3,12,0,0]
+
+const moveZeroes = function (nums) {
+	let left = 0;
+	for (let right = 0; right < nums.length; right++) {
+		if (nums[right] !== 0) {
+			let temp = nums[right];
+			nums[right] = nums[left];
+			nums[left] = temp;
+			left++;
+		}
 	}
-	return true;
+	console.log(nums);
 };
+
+const arr = [0, 1, 0, 3, 12];
+moveZeroes(arr);
