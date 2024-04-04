@@ -2066,10 +2066,35 @@
 // Output: true
 // Explanation: 24 = 16
 
-const isPowerOfTwo = (n) => {
-	if (n === 1) return true;
-	if (n < 1) return false;
-	return isPowerOfTwo(n / 2);
-};
+// const isPowerOfTwo = (n) => {
+// 	if (n === 1) return true;
+// 	if (n < 1) return false;
+// 	return isPowerOfTwo(n / 2);
+// };
 
-console.log(isPowerOfTwo(2));
+// console.log(isPowerOfTwo(2));
+
+//72. Ugly Number
+// An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
+// Given an integer n, return true if n is an ugly number.
+
+// Example 1:
+// Input: n = 6
+// Output: true
+// Explanation: 6 = 2 × 3
+
+// Example 2:
+// Input: n = 1
+// Output: true
+// Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
+
+const isUglyNumber = (num) => {
+	if (num <= 0) return false;
+	while (num > 1) {
+		if (num % 2 === 0) num = num / 2;
+		else if (num % 3 === 0) num = num / 3;
+		else if (num % 5 === 0) num = num / 5;
+		else return false;
+	}
+	return true;
+};
