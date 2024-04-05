@@ -2209,9 +2209,38 @@
 // Output: false
 // Explanation: There is no x where 3x = (-1).
 
-const isPowerOfThree = function (n) {
-	if (n === 1) return true;
-	if (n < 1 || !n % 3) return false;
+// const isPowerOfThree = function (n) {
+// 	if (n === 1) return true;
+// 	if (n < 1 || !n % 3) return false;
 
-	return isPowerOfThree(n / 3);
+// 	return isPowerOfThree(n / 3);
+// };
+
+//77. Reverse String
+// Write a function that reverses a string. The input string is given as an array of characters s.
+// You must do this by modifying the input array in-place with O(1) extra memory.
+
+// Example 1:
+// Input: s = ["h","e","l","l","o"]
+// Output: ["o","l","l","e","h"]
+
+// Example 2:
+// Input: s = ["H","a","n","n","a","h"]
+// Output: ["h","a","n","n","a","H"]
+
+const reverseString = function (s) {
+	let left = 0;
+	let right = s.length - 1;
+
+	for (let i = left; i < s.length / 2; i++) {
+		const temp = s[right];
+		s[right] = s[left];
+		s[left] = temp;
+		right--;
+		left++;
+	}
+	console.log(s);
 };
+
+const string = ['1', '2', '3', '4', '5'];
+reverseString(string);
