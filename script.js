@@ -2347,29 +2347,59 @@
 // Input: ransomNote = "aa", magazine = "aab"
 // Output: true
 
-const canConstruct = function (ransomNote, magazine) {
-	const ransomNoteArray = ransomNote.split('');
-	const magazineArray = magazine.split('');
+// const canConstruct = function (ransomNote, magazine) {
+// 	const ransomNoteArray = ransomNote.split('');
+// 	const magazineArray = magazine.split('');
 
-	let magazineHash = {};
-	for (let i = 0; i < magazine.length; i++) {
-		if (!magazineHash[magazine[i]]) {
-			magazineHash[magazine[i]] = 1;
-		} else {
-			magazineHash[magazine[i]]++;
-		}
+// 	let magazineHash = {};
+// 	for (let i = 0; i < magazine.length; i++) {
+// 		if (!magazineHash[magazine[i]]) {
+// 			magazineHash[magazine[i]] = 1;
+// 		} else {
+// 			magazineHash[magazine[i]]++;
+// 		}
+// 	}
+
+// 	for (let i = 0; i < ransomNote.length; i++) {
+// 		if (!magazineHash[ransomNote[i]] || magazineHash[ransomNote[i]] === 0) {
+// 			return false;
+// 		} else if (magazineHash[ransomNote[i]]) {
+// 			magazineHash[ransomNote[i]]--;
+// 		}
+// 	}
+// 	return true;
+// };
+
+// const ransomNote = 'aa';
+// const magazine = 'aab';
+// canConstruct(ransomNote, magazine);
+
+//82. First Unique Character in a String
+// Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+// Example 1:
+// Input: s = "leetcode"
+// Output: 0
+
+// Example 2:
+// Input: s = "loveleetcode"
+// Output: 2
+
+const firstUniqChar = function (s) {
+	const sArray = s.split('');
+	const hash = {};
+	for (let i = 0; i < sArray.length; i++) {
+		if (!hash[sArray[i]]) {
+			hash[sArray[i]] = 1;
+		} else hash[sArray[i]]++;
 	}
 
-	for (let i = 0; i < ransomNote.length; i++) {
-		if (!magazineHash[ransomNote[i]] || magazineHash[ransomNote[i]] === 0) {
-			return false;
-		} else if (magazineHash[ransomNote[i]]) {
-			magazineHash[ransomNote[i]]--;
+	for (let i = 0; i < sArray.length; i++) {
+		if (hash[sArray[i]] === 1) {
+			return i;
 		}
 	}
-	return true;
+	return -1;
 };
 
-const ransomNote = 'aa';
-const magazine = 'aab';
-canConstruct(ransomNote, magazine);
+const s = 'leetcode';
+firstUniqChar(s);
