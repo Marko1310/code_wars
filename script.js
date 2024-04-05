@@ -2280,22 +2280,57 @@
 // Output: [4,9]
 // Explanation: [9,4] is also accepted.
 
-const intersection2 = function (nums1, nums2) {
-	const arr = [];
+// const intersection2 = function (nums1, nums2) {
+// 	const arr = [];
 
-	const smallerArray = nums1.length > nums2.length ? nums2 : nums1;
-	const biggerArray = nums1.length <= nums2.length ? nums2 : nums1;
+// 	const smallerArray = nums1.length > nums2.length ? nums2 : nums1;
+// 	const biggerArray = nums1.length <= nums2.length ? nums2 : nums1;
 
-	for (let i = 0; i < smallerArray.length; i++) {
-		if (biggerArray.includes(smallerArray[i])) {
-			arr.push(smallerArray[i]);
-			const index = biggerArray.indexOf(smallerArray[i]);
-			biggerArray.splice(index, 1);
-		}
+// 	for (let i = 0; i < smallerArray.length; i++) {
+// 		if (biggerArray.includes(smallerArray[i])) {
+// 			arr.push(smallerArray[i]);
+// 			const index = biggerArray.indexOf(smallerArray[i]);
+// 			biggerArray.splice(index, 1);
+// 		}
+// 	}
+// 	console.log(arr);
+// };
+
+// const arr1 = [1, 2, 2, 1];
+// const arr2 = [2, 2];
+// intersection2(arr1, arr2);
+
+//80. Valid Perfect Square
+// Given a positive integer num, return true if num is a perfect square or false otherwise.
+// A perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.
+// You must not use any built-in library function, such as sqrt.
+
+// Example 1:
+// Input: num = 16
+// Output: true
+// Explanation: We return true because 4 * 4 = 16 and 4 is an integer.
+
+// Example 2:
+// Input: num = 14
+// Output: false
+// Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.
+
+const isPerfectSquare = function (num) {
+	let low = 1;
+	let high = num;
+
+	while (low <= high) {
+		const mid = Math.floor((low + high) / 2);
+		console.log(mid);
+
+		if (mid * mid === num) {
+			return true;
+		} else if (mid * mid > num) {
+			high = mid;
+		} else low = mid;
 	}
-	console.log(arr);
+	return false;
 };
 
-const arr1 = [1, 2, 2, 1];
-const arr2 = [2, 2];
-intersection2(arr1, arr2);
+const num = 81;
+isPerfectSquare(num);
