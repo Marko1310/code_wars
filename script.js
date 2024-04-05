@@ -2228,19 +2228,42 @@
 // Input: s = ["H","a","n","n","a","h"]
 // Output: ["h","a","n","n","a","H"]
 
-const reverseString = function (s) {
-	let left = 0;
-	let right = s.length - 1;
+// const reverseString = function (s) {
+// 	let left = 0;
+// 	let right = s.length - 1;
 
-	for (let i = left; i < s.length / 2; i++) {
-		const temp = s[right];
-		s[right] = s[left];
-		s[left] = temp;
-		right--;
-		left++;
+// 	for (let i = left; i < s.length / 2; i++) {
+// 		const temp = s[right];
+// 		s[right] = s[left];
+// 		s[left] = temp;
+// 		right--;
+// 		left++;
+// 	}
+// 	console.log(s);
+// };
+
+// const string = ['1', '2', '3', '4', '5'];
+// reverseString(string);
+
+//78. Intersection of Two Arrays
+// Given two integer arrays nums1 and nums2, return an array of their
+// intersection
+// . Each element in the result must be unique and you may return the result in any order.
+
+// Example 1:
+// Input: nums1 = [1,2,2,1], nums2 = [2,2]
+// Output: [2]
+
+const intersection = function (nums1, nums2) {
+	const arr = [];
+	for (let i = 0; i < nums1.length; i++) {
+		if (nums2.includes(nums1[i]) && !arr.includes(nums1[i])) {
+			arr.push(nums1[i]);
+		}
 	}
-	console.log(s);
+	console.log(arr);
 };
 
-const string = ['1', '2', '3', '4', '5'];
-reverseString(string);
+const arr1 = [1, 2, 2, 1];
+const arr2 = [2, 2];
+intersection(arr1, arr2);
