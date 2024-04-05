@@ -2107,18 +2107,56 @@
 // Input: nums = [0,1,0,3,12]
 // Output: [1,3,12,0,0]
 
-const moveZeroes = function (nums) {
-	let left = 0;
-	for (let right = 0; right < nums.length; right++) {
-		if (nums[right] !== 0) {
-			let temp = nums[right];
-			nums[right] = nums[left];
-			nums[left] = temp;
-			left++;
-		}
+// const moveZeroes = function (nums) {
+// 	let left = 0;
+// 	for (let right = 0; right < nums.length; right++) {
+// 		if (nums[right] !== 0) {
+// 			let temp = nums[right];
+// 			nums[right] = nums[left];
+// 			nums[left] = temp;
+// 			left++;
+// 		}
+// 	}
+// 	console.log(nums);
+// };
+
+// const arr = [0, 1, 0, 3, 12];
+// moveZeroes(arr);
+
+//74. Word pattern
+// Given a pattern and a string s, find if s follows the same pattern.
+// Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+
+// Example 1:
+// Input: pattern = "abba", s = "dog cat cat dog"
+// Output: true
+
+// Example 2:
+// Input: pattern = "abba", s = "dog cat cat fish"
+// Output: false
+
+const wordPattern = function (pattern, s) {
+	const stringArray = s.split(' ');
+	if (stringArray.length !== pattern.length) {
+		return false;
 	}
-	console.log(nums);
+
+	const hash = {};
+	for (let i = 0; i < stringArray.length; i++) {
+		if (
+			(hash[pattern[i]] && hash[pattern[i]] !== stringArray[i]) ||
+			(!hash[pattern[i]] && Object.values(hash).includes(stringArray[i]))
+		)
+			return false;
+
+		hash[pattern[i]] = stringArray[i];
+
+		return true;
+	}
+
+	return true;
 };
 
-const arr = [0, 1, 0, 3, 12];
-moveZeroes(arr);
+const pattern = 'abba';
+const s = 'dog constructor constructor dog';
+wordPattern(pattern, s);
