@@ -2315,22 +2315,61 @@
 // Output: false
 // Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.
 
-const isPerfectSquare = function (num) {
-	let low = 1;
-	let high = num;
+// const isPerfectSquare = function (num) {
+// 	let low = 1;
+// 	let high = num;
 
-	while (low <= high) {
-		const mid = Math.floor((low + high) / 2);
-		console.log(mid);
+// 	while (low <= high) {
+// 		const mid = Math.floor((low + high) / 2);
+// 		console.log(mid);
 
-		if (mid * mid === num) {
-			return true;
-		} else if (mid * mid > num) {
-			high = mid;
-		} else low = mid;
+// 		if (mid * mid === num) {
+// 			return true;
+// 		} else if (mid * mid > num) {
+// 			high = mid;
+// 		} else low = mid;
+// 	}
+// 	return false;
+// };
+
+// const num = 81;
+// isPerfectSquare(num);
+
+//81. Ransom Note
+// Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+// Each letter in magazine can only be used once in ransomNote.
+
+// Example 1:
+// Input: ransomNote = "a", magazine = "b"
+// Output: false
+
+// Example 3:
+// Input: ransomNote = "aa", magazine = "aab"
+// Output: true
+
+const canConstruct = function (ransomNote, magazine) {
+	const ransomNoteArray = ransomNote.split('');
+	const magazineArray = magazine.split('');
+
+	let magazineHash = {};
+	for (let i = 0; i < magazine.length; i++) {
+		if (!magazineHash[magazine[i]]) {
+			magazineHash[magazine[i]] = 1;
+		} else {
+			magazineHash[magazine[i]]++;
+		}
 	}
-	return false;
+
+	for (let i = 0; i < ransomNote.length; i++) {
+		if (!magazineHash[ransomNote[i]] || magazineHash[ransomNote[i]] === 0) {
+			return false;
+		} else if (magazineHash[ransomNote[i]]) {
+			magazineHash[ransomNote[i]]--;
+		}
+	}
+	return true;
 };
 
-const num = 81;
-isPerfectSquare(num);
+const ransomNote = 'aa';
+const magazine = 'aab';
+canConstruct(ransomNote, magazine);
