@@ -2541,27 +2541,57 @@
 // Input: num1 = "456", num2 = "77"
 // Output: "533"
 
-const addString = (num1, num2) => {
-	let pointer1 = num1.length - 1;
-	let pointer2 = num2.length - 1;
+// const addString = (num1, num2) => {
+// 	let pointer1 = num1.length - 1;
+// 	let pointer2 = num2.length - 1;
 
-	let multiplier = 1;
-	let sum = 0;
-	while (pointer1 >= 0 || pointer2 >= 0) {
-		let digit1 = pointer1 >= 0 ? +num1[pointer1] : 0;
-		let digit2 = pointer2 >= 0 ? +num2[pointer2] : 0;
+// 	let multiplier = 1;
+// 	let sum = 0;
+// 	while (pointer1 >= 0 || pointer2 >= 0) {
+// 		let digit1 = pointer1 >= 0 ? +num1[pointer1] : 0;
+// 		let digit2 = pointer2 >= 0 ? +num2[pointer2] : 0;
 
-		sum += (digit1 + digit2) * multiplier;
-		console.log(sum);
+// 		sum += (digit1 + digit2) * multiplier;
+// 		console.log(sum);
 
-		multiplier *= 10;
-		pointer1--;
-		pointer2--;
+// 		multiplier *= 10;
+// 		pointer1--;
+// 		pointer2--;
+// 	}
+
+// 	return `${sum}`;
+// };
+// const num1 = '11';
+// const num2 = '123';
+
+// addString(num1, num2);
+
+//88. Arranging Coins
+// You have n coins and you want to build a staircase with these coins. The staircase consists of k rows where the ith row has exactly i coins. The last row of the staircase may be incomplete.
+// Given the integer n, return the number of complete rows of the staircase you will build.
+// Input: n = 5
+// Output: 2
+// Explanation: Because the 3rd row is incomplete, we return 2.
+
+// Input: n = 8
+// Output: 3
+// Explanation: Because the 4th row is incomplete, we return 3.
+
+const arrangeCoins = function (n) {
+	let row = 1;
+	let counter = 0;
+
+	while (n >= 0) {
+		console.log(n, row);
+		n = n - row;
+		row += 1;
+		if (n >= 0) {
+			counter++;
+		}
 	}
 
-	return `${sum}`;
+	console.log(counter);
 };
-const num1 = '11';
-const num2 = '123';
 
-addString(num1, num2);
+const n = 5;
+arrangeCoins(n);
