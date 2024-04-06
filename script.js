@@ -2577,21 +2577,51 @@
 // Output: 3
 // Explanation: Because the 4th row is incomplete, we return 3.
 
-const arrangeCoins = function (n) {
-	let row = 1;
-	let counter = 0;
+// const arrangeCoins = function (n) {
+// 	let row = 1;
+// 	let counter = 0;
 
-	while (n >= 0) {
-		console.log(n, row);
-		n = n - row;
-		row += 1;
-		if (n >= 0) {
-			counter++;
+// 	while (n >= 0) {
+// 		console.log(n, row);
+// 		n = n - row;
+// 		row += 1;
+// 		if (n >= 0) {
+// 			counter++;
+// 		}
+// 	}
+
+// 	console.log(counter);
+// };
+
+// const n = 5;
+// arrangeCoins(n);
+
+//89. Find All Numbers Dissapeared in an Array
+// Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+
+// Example 1:
+// Input: nums = [4,3,2,7,8,2,3,1]
+// Output: [5,6]
+
+// Example 2:
+// Input: nums = [1,1]
+// Output: [2]
+
+const findDissapearedNumbers = (nums) => {
+	const arr = [];
+	const hash = {};
+	for (let char of nums) {
+		hash[char] = char;
+	}
+
+	for (let i = 1; i <= nums.length; i++) {
+		if (!hash[i]) {
+			arr.push(i);
 		}
 	}
 
-	console.log(counter);
+	console.log(arr);
 };
 
-const n = 5;
-arrangeCoins(n);
+const nums = [4, 3, 2, 7, 8, 2, 3, 1];
+findDissapearedNumbers(nums);
