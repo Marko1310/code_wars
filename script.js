@@ -2510,21 +2510,58 @@
 // Input: n = 3
 // Output: ["1","2","Fizz"]
 
-const fizzBuzz = (n) => {
-	const arr = [];
-	for (let i = 1; i <= n; i++) {
-		if (i % 3 === 0 && i % 5 === 0) {
-			arr.push('FizzBuzz');
-		} else if (i % 3 === 0) {
-			arr.push('Fizz');
-		} else if (i % 5 === 0) {
-			arr.push('Buzz');
-		} else {
-			arr.push('' + i);
-		}
-	}
-	console.log(arr);
-};
+// const fizzBuzz = (n) => {
+// 	const arr = [];
+// 	for (let i = 1; i <= n; i++) {
+// 		if (i % 3 === 0 && i % 5 === 0) {
+// 			arr.push('FizzBuzz');
+// 		} else if (i % 3 === 0) {
+// 			arr.push('Fizz');
+// 		} else if (i % 5 === 0) {
+// 			arr.push('Buzz');
+// 		} else {
+// 			arr.push('' + i);
+// 		}
+// 	}
+// 	console.log(arr);
+// };
 
-const n = 5;
-fizzBuzz(n);
+// const n = 5;
+// fizzBuzz(n);
+
+//87. Add Strings
+// Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+// You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
+
+// Example 1:
+// Input: num1 = "11", num2 = "123"
+// Output: "134"
+
+// Example 2:
+// Input: num1 = "456", num2 = "77"
+// Output: "533"
+
+const addString = (num1, num2) => {
+	let pointer1 = num1.length - 1;
+	let pointer2 = num2.length - 1;
+
+	let multiplier = 1;
+	let sum = 0;
+	while (pointer1 >= 0 || pointer2 >= 0) {
+		let digit1 = pointer1 >= 0 ? +num1[pointer1] : 0;
+		let digit2 = pointer2 >= 0 ? +num2[pointer2] : 0;
+
+		sum += (digit1 + digit2) * multiplier;
+		console.log(sum);
+
+		multiplier *= 10;
+		pointer1--;
+		pointer2--;
+	}
+
+	return `${sum}`;
+};
+const num1 = '11';
+const num2 = '123';
+
+addString(num1, num2);
