@@ -2418,29 +2418,58 @@
 // Input: s = "", t = "y"
 // Output: "y"
 
-const findTheDifference = (s, t) => {
-	const sArray = s.split('');
-	const tArray = t.split('');
+// const findTheDifference = (s, t) => {
+// 	const sArray = s.split('');
+// 	const tArray = t.split('');
 
-	const hash = {};
-	for (let i = 0; i < sArray.length; i++) {
-		if (!hash[sArray[i]]) {
-			hash[sArray[i]] = 1;
-		} else {
-			hash[sArray[i]]++;
-		}
-	}
+// 	const hash = {};
+// 	for (let i = 0; i < sArray.length; i++) {
+// 		if (!hash[sArray[i]]) {
+// 			hash[sArray[i]] = 1;
+// 		} else {
+// 			hash[sArray[i]]++;
+// 		}
+// 	}
 
-	for (let i = 0; i < tArray.length; i++) {
-		if (hash[tArray[i]]) {
-			hash[tArray[i]]--;
-		} else {
-			console.log(tArray[i]);
-			return tArray[i];
+// 	for (let i = 0; i < tArray.length; i++) {
+// 		if (hash[tArray[i]]) {
+// 			hash[tArray[i]]--;
+// 		} else {
+// 			console.log(tArray[i]);
+// 			return tArray[i];
+// 		}
+// 	}
+// };
+
+// const s = 'a';
+// const t = 'aa';
+// findTheDifference(s, t);
+
+//84. Is Subsequence
+// Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+// A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+// Example 1:
+// Input: s = "abc", t = "ahbgdc"
+// Output: true
+
+// Example 2:
+// Input: s = "axc", t = "ahbgdc"
+// Output: false
+
+const isSubsequence = (s, t) => {
+	let pointerS = 0;
+	let pointerT = 0;
+
+	while (pointerS < s.length && pointerT < t.length) {
+		if (s[pointerS] === t[pointerT]) {
+			pointerS++;
 		}
+		pointerT++;
 	}
+	return pointerS === s.length;
 };
 
-const s = 'a';
-const t = 'aa';
-findTheDifference(s, t);
+const s = 'b';
+const t = 'c';
+isSubsequence(s, t);
