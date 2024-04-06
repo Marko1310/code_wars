@@ -2483,18 +2483,48 @@
 // Output: 7
 // Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
 
-const longestPalindrome = (s) => {
-	let answer = 0;
-	const hash = {};
-	for (let char of s) {
-		hash[char] = (hash[char] || 0) + 1;
-		if (hash[char] % 2 === 0) {
-			answer += 2;
+// const longestPalindrome = (s) => {
+// 	let answer = 0;
+// 	const hash = {};
+// 	for (let char of s) {
+// 		hash[char] = (hash[char] || 0) + 1;
+// 		if (hash[char] % 2 === 0) {
+// 			answer += 2;
+// 		}
+// 	}
+
+// 	return answer === s.length ? answer : answer + 1;
+// };
+
+// const s = 'abccccdd';
+// longestPalindrome(s);
+
+// 86.FIzzBuzz
+// Given an integer n, return a string array answer (1-indexed) where:
+// answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+// answer[i] == "Fizz" if i is divisible by 3.
+// answer[i] == "Buzz" if i is divisible by 5.
+// answer[i] == i (as a string) if none of the above conditions are true.
+
+// Example 1:
+// Input: n = 3
+// Output: ["1","2","Fizz"]
+
+const fizzBuzz = (n) => {
+	const arr = [];
+	for (let i = 1; i <= n; i++) {
+		if (i % 3 === 0 && i % 5 === 0) {
+			arr.push('FizzBuzz');
+		} else if (i % 3 === 0) {
+			arr.push('Fizz');
+		} else if (i % 5 === 0) {
+			arr.push('Buzz');
+		} else {
+			arr.push('' + i);
 		}
 	}
-
-	return answer === s.length ? answer : answer + 1;
+	console.log(arr);
 };
 
-const s = 'abccccdd';
-longestPalindrome(s);
+const n = 5;
+fizzBuzz(n);
