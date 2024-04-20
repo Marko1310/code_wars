@@ -2607,21 +2607,57 @@
 // Input: nums = [1,1]
 // Output: [2]
 
-const findDissapearedNumbers = (nums) => {
-	const arr = [];
-	const hash = {};
-	for (let char of nums) {
-		hash[char] = char;
-	}
+// const findDissapearedNumbers = (nums) => {
+// 	const arr = [];
+// 	const hash = {};
+// 	for (let char of nums) {
+// 		hash[char] = char;
+// 	}
 
-	for (let i = 1; i <= nums.length; i++) {
-		if (!hash[i]) {
-			arr.push(i);
+// 	for (let i = 1; i <= nums.length; i++) {
+// 		if (!hash[i]) {
+// 			arr.push(i);
+// 		}
+// 	}
+
+// 	console.log(arr);
+// };
+
+// const nums = [4, 3, 2, 7, 8, 2, 3, 1];
+// findDissapearedNumbers(nums);
+
+// 90. Repeated Substring Pattern
+// Given a string s, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.
+
+// Example 1:
+// Input: s = "abab"
+// Output: true
+// Explanation: It is the substring "ab" twice.
+
+// Example 2:
+// Input: s = "aba"
+// Output: false
+
+const repeatedSubstringPattern = (s) => {
+	if (s.length % 2 !== 0) return false;
+	const hash = {};
+	let counter = 0;
+	for (let i = 0; i < s.length; i++) {
+		if (hash[s[i]] === undefined) {
+			hash[s[i]] = i;
+			counter++;
+		} else {
+			if (hash[s[i]] !== i - counter) {
+				console.log(false);
+				return false;
+			}
+			hash[s[i]] += counter;
+			console.log(hash);
 		}
 	}
-
-	console.log(arr);
+	console.log(true);
+	return true;
 };
 
-const nums = [4, 3, 2, 7, 8, 2, 3, 1];
-findDissapearedNumbers(nums);
+const s = 'abac';
+repeatedSubstringPattern(s);
